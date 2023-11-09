@@ -1,0 +1,491 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+}
+/* Balise html */
+h1 {
+  margin-top: 40px;
+  font-size: 32px;
+}
+h5{
+  text-align: center;
+}
+img {
+  margin-top: 35px;
+  width: 120px;
+  height: auto;
+  animation: float-animation 3s ease-in-out infinite;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+p {
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-family: 'Poppins';
+  min-height: 100vh;
+  margin: auto;
+  overflow: auto;
+  background: linear-gradient(315deg, rgb(160, 84, 84) 3%, rgba(160, 91, 84) 38%, rgb(160, 84, 84) 68%, rgba(160, 91, 84) 98%);
+  animation: gradient 15s ease infinite;
+  background-size: 400% 400%;
+  background-attachment: fixed;
+}
+
+form {
+  padding: 30px;
+  border: 1px solid #f1f1f1;
+  background: #fff;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  border-radius: 10px;
+  margin: 40px 0px 75px;
+}
+
+/* Classe */
+.accueil {
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  margin-bottom: 25px;
+  font-size: 1rem;
+}
+
+.parametres {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.parametres a {
+  color: white;
+  background-color: orange;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.parametres .ruche_delete {
+  color: white;
+  background-color: red;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.titre-accueil {
+  margin-top: 45px;
+  font-size: 1.5rem;
+}
+
+.ajout-ruche {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.ajout-ruche a {
+  background-color: white;
+  color: black;
+  padding: 8px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.connexion-accueil {
+  display: flex;
+  margin-top: 50px;
+  align-items: center;
+  animation: slide-down 1.7s;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.wave {
+  background: rgb(255 255 255 / 25%);
+  border-radius: 1000% 1000% 0 0;
+  position: fixed;
+  width: 200%;
+  height: 12em;
+  animation: wave 10s -3s linear infinite;
+  transform: translate3d(0, 0, 0);
+  opacity: 0.8;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.wave:nth-of-type(2) {
+  bottom: -1.25em;
+  animation: wave 18s linear reverse infinite;
+  opacity: 0.8;
+}
+
+.wave:nth-of-type(3) {
+  bottom: -2.5em;
+  animation: wave 20s -1s reverse infinite;
+  opacity: 0.9;
+}
+
+.connexion-accueil a {
+  padding: 5px;
+  border-radius: 5px;
+  color: red;
+}
+
+.container h1 {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 32px;
+}
+
+.action {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.action button {
+  color: white;
+  background-color: orange;
+  border-radius: 10px;
+  padding: 5px;
+  border: none;
+  font-size: 16px;
+  font-family: 'Poppins';
+}
+
+.action #back {
+  color: white;
+  background-color: orange;
+  border-radius: 10px;
+  padding: 5px;
+  border: none;
+  font-size: 16px;
+}
+
+.recoltes {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info-recolte {
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  margin-bottom: 25px;
+  font-size: 1rem;
+  margin-top: 15px;
+}
+
+.option-recoltes {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.info-ruche {
+  font-size: 0.9rem;
+  padding: 10px;
+}
+
+.option-recoltes a {
+  color: white;
+  background-color: orange;
+  border-radius: 10px;
+  padding: 5px;
+  border: none;
+  font-size: 16px;
+}
+
+.retour-accueil {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.retour-accueil a {
+  background-color: white;
+  font-size: 1rem;
+  color: black;
+  padding: 8px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeInAnimation 0.8s ease-in forwards;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  /* Couleur de fond du loader */
+  border-top: 16px solid orange;
+  /* Couleur de l'animation */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+.recap {
+  background-color: white;
+  max-width: 260px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.recap h2 {
+  font-size: medium;
+}
+
+.recap2 {
+  background-color: white;
+  max-width: 260px;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 20px 0px 25px;
+}
+
+.recap2 ul {
+  padding: 20px;
+}
+
+.recaptitre {
+  font-size: medium;
+  text-align: center;
+}
+
+.modifierrec {
+  max-width: 60%;
+}
+
+.back-accueil {
+  color: black;
+  background-color: white;
+  border-radius: 10px;
+  padding: 7px;
+  border: none;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+.mdp_forgot {
+  color: black;
+  background-color: white;
+  border-radius: 10px;
+  padding: 7px;
+  border: none;
+  font-size: 16px;
+  margin-top: -40px;
+  margin-bottom: 15px;
+}
+.preferences{
+  max-width: 300px;
+  font-size: 1rem;
+  padding: 5px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.623);
+  border-radius: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+/* Identifiants */
+#back-ruche {
+  color: black;
+  background-color: white;
+  border-radius: 10px;
+  padding: 7px;
+  border: none;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+#modifier-ruche {
+  padding: 30px;
+  border: 1px solid #f1f1f1;
+  background: #fff;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  border-radius: 10px;
+  margin: 40px 0px 20px;
+}
+
+
+#pages {
+  max-width: 100px;
+  margin-top: 20px;
+}
+
+
+#accueil_btn {
+  background-color: red;
+  color: white;
+  padding: 14px 20px;
+  margin: 15px 0;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#modifier {
+  margin-top: 15px;
+  font-size: 16px;
+  font-family: 'Poppins';
+}
+
+#supprimer {
+  color: white;
+  background-color: red;
+  border-radius: 10px;
+  padding: 5px;
+  border: none;
+  font-size: 16px;
+}
+
+/* Input */
+input[type=text],
+input[type=password] {
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 5px;
+  ;
+}
+
+input[type=submit] {
+  background-color: red;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input[type=submit]:hover {
+  background-color: orange;
+  color: white;
+}
+
+/* Keyframes */
+@keyframes slide-down {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-animation {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  50% {
+    background-position: 100% 100%;
+  }
+
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+@keyframes wave {
+  2% {
+    transform: translateX(1);
+  }
+
+  25% {
+    transform: translateX(-25%);
+  }
+
+  50% {
+    transform: translateX(-50%);
+  }
+
+  75% {
+    transform: translateX(-25%);
+  }
+
+  100% {
+    transform: translateX(1);
+  }
+}
+
