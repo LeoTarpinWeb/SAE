@@ -79,11 +79,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div>
             <h2>Modifier les Informations</h2>
             <form action="compte.php" method="post">
-                <label for="nom">Nom:</label>
+                <p for="nom">Nom:</p>
                 <input type="text" id="nom" name="nom" value="<?php echo $user['Nom']; ?>">
-                <label for="prenom">Prénom:</label>
+                <p for="prenom">Prénom:</p>
                 <input type="text" id="prenom" name="prenom" value="<?php echo $user['Prenom']; ?>">
-                <label for="email">Email:</label>
+                <p for="email">Email:</p>
                 <input type="email" id="email" name="email" value="<?php echo $user['Email']; ?>">
                 <button type="submit">Mettre à jour</button>
             </form>
@@ -92,4 +92,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <footer>
     </footer>
 </body>
+<script src="./java_main.js"></script>
 </html>

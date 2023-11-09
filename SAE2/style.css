@@ -81,7 +81,6 @@ label {
 	width: 30px;
 	margin-bottom: 0;
   }
-  
   #menu_checkbox:checked + label {
 	transform: translateY(-50%) rotateZ(-90deg);
   }
@@ -158,9 +157,13 @@ form {
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	padding: 0 50px;
-	height: 100%;
+	padding: 0 4%;
+	height: 60%;
+	width:50%;
 	text-align: center;
+	position: fixed;
+	top:20%;
+	left:35%;
 }
 main{
 	text-align: center;

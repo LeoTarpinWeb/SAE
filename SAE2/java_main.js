@@ -15,7 +15,7 @@ window.addEventListener('DOMContentLoaded',function(){
 window.addEventListener('scroll',function(){
     var size = window.clientwidth;
     scrol=window.scrollY;
-                    if(scrol > 50){
+                    if(scrol > 20){
                         header.style.backgroundColor="#eeebca";
                     }
                     else{header.style.backgroundColor="";}
