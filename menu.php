@@ -38,7 +38,7 @@ session_start();
         <h1>Nos propositions</h1>
         <div class="propos">
             <?php
-            $sql = 'SELECT * FROM `plat` WHERE offres = 1;';
+            $sql = 'SELECT * FROM `plat`;';
             $stv = $dbh->prepare($sql);
             $stv->execute();
             $offres = $stv->fetchAll();
