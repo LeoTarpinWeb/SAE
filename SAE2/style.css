@@ -159,16 +159,18 @@ form {
 	flex-direction: column;
 	padding: 0 4%;
 	height: 60%;
-	width:50%;
+	width:35%;
 	text-align: center;
 	position: fixed;
 	top:20%;
-	left:35%;
+	left:32%;
+
 }
 main{
 	text-align: center;
 	place-items:center;
 	margin-top: 15vh;
+	position: relative;
 }
 input {
 	background-color: #eee;
