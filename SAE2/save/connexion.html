@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&amp;display=swap" rel="stylesheet">
+    <title>BEETRAV</title>
+    <style>
+        /* Styles pour le formulaire */
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            position: relative;
+        }
+
+        /* Styles pour les marque-pages */
+        .language-menu {
+            list-style: none;
+            position: absolute;
+            top: 12%;
+            right: -14%; /* Aligner le bloc des langues à droite */
+        }
+
+        .language-menu li {
+            display: block;
+            margin-bottom: 10px; /* Espace entre les langues */
+        }
+
+        .language-menu a {
+            text-decoration: none;
+            color: #000; /* Couleur du texte */
+            background-color: #fff; /* Couleur de l'arrière-plan */
+            padding: 5px 10px;
+            border-radius: 5px;
+            width: 50px; /* Largeur fixe pour les langues */
+            text-align: center; /* Centrer le texte */
+        }
+
+        /* Styles pour le formulaire */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form method="post">
+            <label for="pseudo">Nom d'utilisateur :</label>
+            <input type="text" name="pseudo" required><br>
+
+            <label for "mdp">Mot de passe :</label>
+            <input type="password" name="mdp" required><br>
+
+            <input type="submit" value="Envoyer">
+        </form>
+
+        <ul class="language-menu">
+            <li><a href="#" id="fr-lang">FR</a></li>
+            <li><a href="#" id="en-lang">EN</a></li>
+            <!-- Ajoutez d'autres langues si nécessaire -->
+        </ul>
+    </div>
+
+    <!-- Reste de votre code HTML -->
+</body>
+</html>
