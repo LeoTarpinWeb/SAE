@@ -35,7 +35,6 @@ session_start();
         </div>
     </header>
     <main>
-        <h1>Nos propositions</h1>
         <div class="propos">
             <?php
             $sql = 'SELECT * FROM `plat`;';
@@ -53,16 +52,6 @@ session_start();
                     </div>
                 </div>
             <?php } ?>
-        </div>
-        <div class="menu">
-            <div>
-                <img src="img/fouée.png" alt="fouée">
-            </div>
-            <div>
-                <h3>Votre commande</h3>
-                <p>Choisissez ce que vous voulez manger !</p>
-                <a href="command.php"><button>Je commande</button></a>
-            </div>
         </div>
     </main>
     <footer>
