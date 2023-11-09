@@ -13,10 +13,10 @@ session_start();
     <title>Fuéego</title>
 </head>
 <body>
-    <header>
+<header>
         <nav class="navi">
             <a href="./accueil.php"> Accueil </a>
-            <a>Notre menu</a>
+            <a href="./menu.php">Notre menu</a>
             <a>Votre commande</a>
         </nav>
         <span></span>

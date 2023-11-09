@@ -13,15 +13,15 @@ session_start();
     <title>Informations sur le Produit</title>
 </head>
 <body>
-    <header>
+<header>
         <nav class="navi">
             <a href="./accueil.php"> Accueil </a>
-            <a>Notre menu</a>
+            <a href="./menu.php">Notre menu</a>
             <a>Votre commande</a>
         </nav>
         <span></span>
         <nav class="navi">
-            <a> Mon compte</a>
+            <a href="./compte.php"> Mon compte</a>
             <a> Accessibilité</a>
         </nav>
         <input type="checkbox" class="d-none" id="menu_checkbox">
