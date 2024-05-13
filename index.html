@@ -9,17 +9,27 @@
             margin: 0;
             height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             background-color: #ffffff; /* Default background color */
+        }
+        #color-display {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 20px;
+        }
+        #color-code {
+            font-size: 24px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body id="color-display">
     <video id="video" width="640" height="480" autoplay></video>
     <canvas id="canvas" style="display:none;"></canvas>
-    <div></div>
-    <!-- <div id="color-display" style="width: 50px; height: 50px;"></div> -->
+    <div id="color-display"></div>
+    <div id="color-code"></div>
 
     <script>
         navigator.mediaDevices.getUserMedia({ video: true })
@@ -63,14 +73,23 @@
             }
 
             // Mise à jour de la couleur de fond avec la couleur dominante
-            var colorDisplay = document.getElementById('color-display');
-            var test = colorDisplay.style.backgroundColor = "rgb(" + dominantColor.join(",") + ")";
+            var body = document.body;
+            body.style.backgroundColor = "rgb(" + dominantColor.join(",") + ")";
+            
+            // Convertir la couleur dominante en format hexadécimal
+            var hexCode = rgbToHex(dominantColor[0], dominantColor[1], dominantColor[2]);
+            
+            // Afficher le code hexadécimal
+            var colorCode = document.getElementById('color-code');
+            colorCode.innerText = "Code hexadécimal : #" + hexCode;
         }
 
         setInterval(processImage, 1000); // Appeler processImage toutes les secondes
+
+        // Fonction pour convertir RVB en hexadécimal
+        function rgbToHex(r, g, b) {
+            return ((r << 16) | (g << 8) | b).toString(16).padStart(6, '0');
+        }
     </script>
-    <div> <script type="text/javascript">
-        document.write(test)
-     </script></div>
 </body>
 </html>
