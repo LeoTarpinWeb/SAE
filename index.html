@@ -9,61 +9,30 @@
             margin: 0;
             height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             background-color: #ffffff; /* Default background color */
         }
-
-        #color-display {
-            width: 50px;
-            height: 50px;
-            margin-top: 20px;
-        }
-
-        #toggle-camera {
-            display: none;
-            margin-top: 20px;
-        }
     </style>
 </head>
-<body>
+<body id="color-display">
     <video id="video" width="640" height="480" autoplay></video>
     <canvas id="canvas" style="display:none;"></canvas>
-    <div id="color-display"></div>
-    <button id="toggle-camera">Changer de caméra</button>
+    <!-- <div id="color-display" style="width: 50px; height: 50px;"></div> -->
 
     <script>
-        var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-        if (isMobile) {
-            var toggleCameraButton = document.getElementById('toggle-camera');
-            toggleCameraButton.style.display = 'block';
-        }
-
-        var video = document.getElementById('video');
-        var currentStream;
-
-        function startCamera() {
-            navigator.mediaDevices.getUserMedia({ video: true })
-                .then(function(stream) {
-                    if (currentStream) {
-                        currentStream.getTracks().forEach(track => {
-                            track.stop();
-                        });
-                    }
-                    currentStream = stream;
-                    video.srcObject = stream;
-                    video.play();
-                })
-                .catch(function(err) {
-                    console.log("An error occurred: " + err);
-                });
-        }
-
-        startCamera(); // Start camera by default
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function(stream) {
+                var video = document.getElementById('video');
+                video.srcObject = stream;
+                video.play();
+            })
+            .catch(function(err) {
+                console.log("An error occurred: " + err);
+            });
 
         function processImage() {
+            var video = document.getElementById('video');
             var canvas = document.getElementById('canvas');
             var context = canvas.getContext('2d');
             var width = canvas.width = video.videoWidth;
@@ -98,26 +67,6 @@
         }
 
         setInterval(processImage, 1000); // Appeler processImage toutes les secondes
-
-        if (isMobile) {
-            toggleCameraButton.addEventListener('click', function() {
-                var constraints = {
-                    video: {
-                        facingMode: (currentStream.getVideoTracks()[0].getSettings().facingMode === 'user') ? 'environment' : 'user'
-                    }
-                };
-
-                navigator.mediaDevices.getUserMedia(constraints)
-                    .then(function(stream) {
-                        currentStream = stream;
-                        video.srcObject = stream;
-                        video.play();
-                    })
-                    .catch(function(err) {
-                        console.log("An error occurred: " + err);
-                    });
-            });
-        }
     </script>
 </body>
 </html>
