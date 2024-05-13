@@ -73,10 +73,13 @@
 
             // Mise à jour de la couleur de fond avec la couleur dominante
             var colorDisplay = document.getElementById('color-display');
-            colorDisplay.style.backgroundColor = "rgb(" + dominantColor.join(",") + ")";
+           test = colorDisplay.style.backgroundColor = "rgb(" + dominantColor.join(",") + ")";
         }
 
         setInterval(processImage, 1000); // Appeler processImage toutes les secondes
     </script>
+     <div> <script type="text/javascript">
+        document.write(test)
+     </script></div>
 </body>
 </html>
