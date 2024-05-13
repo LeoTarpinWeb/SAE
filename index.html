@@ -13,32 +13,26 @@
             align-items: center;
             background-color: #ffffff; /* Default background color */
         }
+        #color-display {
+            width: 50px;
+            height: 50px;
+        }
     </style>
 </head>
-<body id="color-display">
+<body>
     <video id="video" width="640" height="480" autoplay></video>
     <canvas id="canvas" style="display:none;"></canvas>
-<!--     <div id="color-display" style="width: 50px; height: 50px;"></div> -->
+    <div id="color-display"></div>
 
     <script>
-        navigator.mediaDevices.getUserMedia({ video: { facingMode: { exact: 'environment' } } }) // Utiliser la caméra arrière
+        navigator.mediaDevices.getUserMedia({ video: true })
             .then(function(stream) {
                 var video = document.getElementById('video');
                 video.srcObject = stream;
                 video.play();
             })
-            .catch(function() {
-                // Si la caméra arrière n'est pas disponible, utiliser la caméra frontale ou afficher un message d'erreur
-                console.log("Failed to access the rear camera, trying front camera.");
-                navigator.mediaDevices.getUserMedia({ video: true })
-                    .then(function(stream) {
-                        var video = document.getElementById('video');
-                        video.srcObject = stream;
-                        video.play();
-                    })
-                    .catch(function(err) {
-                        console.log("An error occurred: " + err);
-                    });
+            .catch(function(err) {
+                console.log("An error occurred: " + err);
             });
 
         function processImage() {
@@ -73,13 +67,10 @@
 
             // Mise à jour de la couleur de fond avec la couleur dominante
             var colorDisplay = document.getElementById('color-display');
-            var test = colorDisplay.style.backgroundColor = "rgb(" + dominantColor.join(",") + ")";
+            colorDisplay.style.backgroundColor = "rgb(" + dominantColor.join(",") + ")";
         }
 
         setInterval(processImage, 1000); // Appeler processImage toutes les secondes
     </script>
-     <div> <script type="text/javascript">
-        document.write(test)
-     </script></div>
 </body>
 </html>
