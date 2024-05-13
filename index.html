@@ -15,20 +15,30 @@
         }
     </style>
 </head>
-<body id="color-display">
+<body>
     <video id="video" width="640" height="480" autoplay></video>
     <canvas id="canvas" style="display:none;"></canvas>
-    <!-- <div id="color-display" style="width: 50px; height: 50px;"></div> -->
+    <div id="color-display" style="width: 50px; height: 50px;"></div>
 
     <script>
-        navigator.mediaDevices.getUserMedia({ video: true })
+        navigator.mediaDevices.getUserMedia({ video: { facingMode: { exact: 'environment' } } }) // Utiliser la caméra arrière
             .then(function(stream) {
                 var video = document.getElementById('video');
                 video.srcObject = stream;
                 video.play();
             })
-            .catch(function(err) {
-                console.log("An error occurred: " + err);
+            .catch(function() {
+                // Si la caméra arrière n'est pas disponible, utiliser la caméra frontale ou afficher un message d'erreur
+                console.log("Failed to access the rear camera, trying front camera.");
+                navigator.mediaDevices.getUserMedia({ video: true })
+                    .then(function(stream) {
+                        var video = document.getElementById('video');
+                        video.srcObject = stream;
+                        video.play();
+                    })
+                    .catch(function(err) {
+                        console.log("An error occurred: " + err);
+                    });
             });
 
         function processImage() {
