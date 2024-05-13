@@ -15,10 +15,10 @@
         }
     </style>
 </head>
-<body>
+<body id="color-display">
     <video id="video" width="640" height="480" autoplay></video>
     <canvas id="canvas" style="display:none;"></canvas>
-    <div id="color-display" style="width: 50px; height: 50px;"></div>
+<!--     <div id="color-display" style="width: 50px; height: 50px;"></div> -->
 
     <script>
         navigator.mediaDevices.getUserMedia({ video: { facingMode: { exact: 'environment' } } }) // Utiliser la caméra arrière
