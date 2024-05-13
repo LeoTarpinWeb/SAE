@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The color is</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff; /* Default background color */
+        }
+    </style>
+</head>
+<body id="color-display">
+    <video id="video" width="640" height="480" autoplay></video>
+    <canvas id="canvas" style="display:none;"></canvas>
+    <!-- <div id="color-display" style="width: 50px; height: 50px;"></div> -->
+
+    <script>
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function(stream) {
+                var video = document.getElementById('video');
+                video.srcObject = stream;
+                video.play();
+            })
+            .catch(function(err) {
+                console.log("An error occurred: " + err);
+            });
+
+        function processImage() {
+            var video = document.getElementById('video');
+            var canvas = document.getElementById('canvas');
+            var context = canvas.getContext('2d');
+            var width = canvas.width = video.videoWidth;
+            var height = canvas.height = video.videoHeight;
+            context.drawImage(video, 0, 0, width, height);
+            
+            var imageData = context.getImageData(0, 0, width, height);
+            var data = imageData.data;
+
+            // Analyse de la couleur dominante
+            var colorCounts = {};
+            var maxColorCount = 0;
+            var dominantColor = [0, 0, 0];
+
+            for (var i = 0; i < data.length; i += 4) {
+                var r = data[i];
+                var g = data[i + 1];
+                var b = data[i + 2];
+                var rgb = [r, g, b].join(",");
+
+                colorCounts[rgb] = colorCounts[rgb] ? colorCounts[rgb] + 1 : 1;
+
+                if (colorCounts[rgb] > maxColorCount) {
+                    maxColorCount = colorCounts[rgb];
+                    dominantColor = [r, g, b];
+                }
+            }
+
+            // Mise à jour de la couleur de fond avec la couleur dominante
+            var colorDisplay = document.getElementById('color-display');
+            colorDisplay.style.backgroundColor = "rgb(" + dominantColor.join(",") + ")";
+        }
+
+        setInterval(processImage, 1000); // Appeler processImage toutes les secondes
+    </script>
+</body>
+</html>
