@@ -32,14 +32,24 @@
     <div id="color-code"></div>
 
     <script>
-        navigator.mediaDevices.getUserMedia({ video: true })
+         navigator.mediaDevices.getUserMedia({ video: { facingMode: { exact: 'environment' } } }) // Utiliser la caméra arrière
             .then(function(stream) {
                 var video = document.getElementById('video');
                 video.srcObject = stream;
                 video.play();
             })
-            .catch(function(err) {
-                console.log("An error occurred: " + err);
+            .catch(function() {
+                // Si la caméra arrière n'est pas disponible, utiliser la caméra frontale ou afficher un message d'erreur
+                console.log("Failed to access the rear camera, trying front camera.");
+                navigator.mediaDevices.getUserMedia({ video: true })
+                    .then(function(stream) {
+                        var video = document.getElementById('video');
+                        video.srcObject = stream;
+                        video.play();
+                    })
+                    .catch(function(err) {
+                        console.log("An error occurred: " + err);
+                    });
             });
 
         function processImage() {
