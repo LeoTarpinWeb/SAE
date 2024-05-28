@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #FFFFFF;
+    width: 100vw;
+    height: 100vh;
+}
+@media screen and (max-width: 480px){
+    header{
+        position: relative;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40vh;
+    }
+    .logoImage{
+        width: 45vw;
+        height:100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    header img{
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+    main{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 50vh;
+    }
+    main a{
+        text-decoration: none;
+        border: solid 5px #0000FF;
+        color: #0000FF;
+        border-radius: 35px;
+        padding: 5px 0;
+        margin: 50px 0;
+        width: 85vw;
+        text-align: center;
+        font-family: "Kreon";
+        font-size: 40px;
+    }
+}
+
