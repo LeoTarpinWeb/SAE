@@ -1,10 +1,10 @@
 *{
-    margin: 0;
-    padding: 0;
+    margin: 0 ;
+    padding: 0 ;
     box-sizing: border-box;
 }
 body{
-    background-color: #FFFFFF;
+    background-color: red;
     width: 100vw;
     height: 100vh;
 }
@@ -24,7 +24,7 @@ body{
         align-items: center;
         justify-content: center;
     }
-    header img{
+    img{
         width: 100%;
         height: auto;
         object-fit: cover;
@@ -34,7 +34,8 @@ body{
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 50vh;
+        height: 70vh;
+        position: relative;
     }
     main a{
         text-decoration: none;
@@ -48,5 +49,21 @@ body{
         font-family: "Kreon";
         font-size: 40px;
     }
+    button{
+        background: none;
+        border: 0;
+    }
+    .buttonphoto{
+        width: 40vw;
+        height: 40vw;
+        background-image: url("./../../images/try3-button.png");
+        border: 10px solid #FFFFFF;
+        border-radius: 50%;
+        padding: 0;
+    }
+    button img{
+        height: 100%;
+    }
+    
 }
 
