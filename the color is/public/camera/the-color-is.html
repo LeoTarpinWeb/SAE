@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -5,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The color is</title>
     <link rel="manifest" href="/manifest.json">
-    <link href="./src/Styles.css" rel="stylesheet" />
+    <link href="./../../back/Assets/style/style.css" rel="stylesheet" />
     <meta name="theme-color" content="#ffffff">
 </head>
 <body id="color-display">
@@ -13,16 +14,16 @@
     <canvas id="canvas" style="display:none;"></canvas>
     <div id="buttons">
         <a id="flash">
-            <img src="./Images/bolt-solid.svg" alt="Flash" class="button__icon">
+            <img src="./../../back/images/bolt-solid.svg" alt="Flash" class="button__icon">
         </a>
         <a id="take-photo">
-            <img src="./Images/button.png" alt="Prendre une photo" class="button__icon">
+            <img src="./../../back/images/Logo.png" alt="Prendre une photo" class="button__icon">
         </a>
         <a id="switch-camera">
-            <img src="./Images/arrows-rotate-solid.svg" alt="Changer de caméra" class="button__icon">
+            <img src="./../../back/images/fleches.svg" alt="Changer de caméra" class="button__icon">
         </a>
     </div>
-    <p id="color-info"></p>
+    <!-- <p id="color-info"></p> -->
     <script>
         let currentStream;
         let useFrontCamera = true;
