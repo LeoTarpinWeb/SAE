@@ -7,7 +7,7 @@ body {
     background-color: red;
     margin: 0;
     padding: 0;
-    height: 100vh;
+    height: auto;
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -121,18 +121,30 @@ body {
         justify-content: space-between;
         align-items: center;
     }
-    .attentes{
+    .attentes {
+        margin-top: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         position: relative;
         z-index: 2;
-        display: flex;
-        justify-content: center;
-        align-items: center !important;
+    }
+    
+    .attentes img.cercle {
+        width: 80vw;
+        height: 80vw;
+        animation: spin 2s linear infinite;
+    }
+    
+    .attentes span {
+        margin-top: 20px;
+        font-size: 1.8em;
+        color: #000;
     }
     .attentes > img:first-child{
         width: auto;
-        height: 100%;
         object-fit: cover;
-        position: absolute;
         z-index:0
     }
     .attentes img:last-child {
