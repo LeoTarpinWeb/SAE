@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loader</title>
+  <link href="./../../back/Assets/style/style.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&amp;display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/9d2be48189.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="attentes">
+        <img class="cercle" src="../../back/images/chargement.svg">
+        <span>Chargement des données...</span>
+    </div>
+  <script>
+    function getQueryParams() {
+      const params = {};
+      window.location.search.substring(1).split("&").forEach(pair => {
+        const [key, value] = pair.split("=");
+        params[decodeURIComponent(key)] = decodeURIComponent(value);
+      });
+      return params;
+    }
+
+    window.addEventListener('load', () => {
+      const params = getQueryParams();
+      const color = params.color || "#000000";
+      const brightness = parseFloat(params.brightness) || 255;
+
+      // Rediriger vers result.html après un délai
+      setTimeout(function () {
+        window.location.href = `result.html?color=${encodeURIComponent(color)}&brightness=${encodeURIComponent(brightness)}`;
+      }, 200000);
+    });
+  </script>
+</body>
+</html>
