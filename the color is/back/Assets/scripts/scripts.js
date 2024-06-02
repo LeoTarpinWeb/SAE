@@ -3,6 +3,7 @@ let currentTurn = 0;
 let timer;
 let currentStream;
 let targetColor;
+let useFrontCamera = true;
 
 document.getElementById('player-setup').addEventListener('submit', (e) => {
     e.preventDefault();
@@ -12,6 +13,11 @@ document.getElementById('player-setup').addEventListener('submit', (e) => {
 document.getElementById('take-photo').addEventListener('click', takePhoto);
 document.getElementById('play-again').addEventListener('click', () => {
     location.reload();
+});
+
+document.getElementById('switch-camera').addEventListener('click', () => {
+    useFrontCamera = !useFrontCamera;
+    getMedia();
 });
 
 function setupPlayers() {
@@ -48,7 +54,9 @@ async function getMedia() {
         currentStream.getTracks().forEach(track => track.stop());
     }
     const constraints = {
-        video: true
+        video: {
+            facingMode: useFrontCamera ? 'user' : 'environment'
+        }
     };
     currentStream = await navigator.mediaDevices.getUserMedia(constraints);
     const video = document.getElementById('video');
@@ -135,8 +143,13 @@ function endGame() {
 }
 
 function colorDistance(color1, color2) {
+    if (!color1 || !color2) {
+        return Infinity;
+    }
+    
     const rgb1 = color1.match(/\d+/g).map(Number);
     const rgb2 = color2.match(/\d+/g).map(Number);
+    
     return Math.sqrt(
         (rgb1[0] - rgb2[0]) ** 2 +
         (rgb1[1] - rgb2[1]) ** 2 +
