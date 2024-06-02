@@ -17,18 +17,20 @@
             <button type="submit">Commencer le jeu</button>
         </form>
     </div>
-
     <div id="game" style="display: none;">
         <div class="game-container">
+            <div class="game-content" id="game-content">
+                <h2 id="player-turn"></h2>
+                <p>Photographiez cette couleur:</p>
+                <div id="target-color" class="color-box"></div>
+                <video id="video" autoplay></video>
+                <canvas id="canvas" style="display:none;"></canvas>
+                <button id="take-photo">Prendre une photo</button>
+                <button id="switch-camera">Changer de caméra</button>
+            </div>
             <div class="timer-container">
                 <p>Temps restant: <span id="timer">10</span> secondes</p>
             </div>
-            <h2 id="player-turn"></h2>
-            <p>Photographiez cette couleur:</p>
-            <div id="target-color" class="color-box"></div>
-            <video id="video" autoplay></video>
-            <canvas id="canvas" style="display:none;"></canvas>
-            <button id="take-photo">Prendre une photo</button>
         </div>
     </div>
 
