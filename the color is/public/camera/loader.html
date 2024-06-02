@@ -10,7 +10,7 @@
   <script src="https://kit.fontawesome.com/9d2be48189.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body class="auto">
     <div class="attentes">
         <img class="cercle" src="../../back/images/chargement.svg">
         <span>Chargement des données...</span>
@@ -33,7 +33,7 @@
       // Rediriger vers result.html après un délai
       setTimeout(function () {
         window.location.href = `result.html?color=${encodeURIComponent(color)}&brightness=${encodeURIComponent(brightness)}`;
-      }, 200000);
+      }, 2000);
     });
   </script>
 </body>
