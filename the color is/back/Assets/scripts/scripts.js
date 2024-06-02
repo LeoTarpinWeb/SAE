@@ -78,31 +78,25 @@ function takePhoto() {
 
     const imageData = context.getImageData(0, 0, width, height);
     const data = imageData.data;
-    const dominantColor = getDominantColor(data);
+    const dominantColor = getAverageColor(data);
     players[currentTurn].photoColor = dominantColor;
 
     currentTurn++;
     nextTurn();
 }
 
-function getDominantColor(data) {
-    const colorCounts = {};
-    let maxColorCount = 0;
-    let dominantColor = [0, 0, 0];
-
+function getAverageColor(data) {
+    let r = 0, g = 0, b = 0, count = 0;
     for (let i = 0; i < data.length; i += 4) {
-        const r = data[i];
-        const g = data[i + 1];
-        const b = data[i + 2];
-        const rgb = [r, g, b].join(",");
-        colorCounts[rgb] = (colorCounts[rgb] || 0) + 1;
-
-        if (colorCounts[rgb] > maxColorCount) {
-            maxColorCount = colorCounts[rgb];
-            dominantColor = [r, g, b];
-        }
+        r += data[i];
+        g += data[i + 1];
+        b += data[i + 2];
+        count++;
     }
-    return `rgb(${dominantColor.join(",")})`;
+    r = Math.floor(r / count);
+    g = Math.floor(g / count);
+    b = Math.floor(b / count);
+    return `rgb(${r}, ${g}, ${b})`;
 }
 
 function getRandomColor() {
