@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Match Game</title>
+    <link href="./../../back/Assets/style/style_game.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="setup">
+        <h1>Color Match Game</h1>
+        <form id="player-setup">
+            <label for="num-players">Nombre de joueurs:</label>
+            <input type="number" id="num-players" name="num-players" min="1" max="10" required>
+            <button type="submit">Commencer le jeu</button>
+        </form>
+    </div>
+
+    <div id="game" style="display: none;">
+        <div class="game-container">
+            <div class="timer-container">
+                <p>Temps restant: <span id="timer">10</span> secondes</p>
+            </div>
+            <h2 id="player-turn"></h2>
+            <p>Photographiez cette couleur:</p>
+            <div id="target-color" class="color-box"></div>
+            <video id="video" autoplay></video>
+            <canvas id="canvas" style="display:none;"></canvas>
+            <button id="take-photo">Prendre une photo</button>
+        </div>
+    </div>
+
+    <div id="result" style="display: none;">
+        <h2>Résultat</h2>
+        <div id="winner"></div>
+        <button id="play-again">Rejouer</button>
+    </div>
+
+    <script src="./../../back/Assets/scripts/scripts.js"></script>
+</body>
+
+</html>
