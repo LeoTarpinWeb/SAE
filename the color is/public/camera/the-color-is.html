@@ -9,19 +9,27 @@
     <link href="./../../back/Assets/style/style.css" rel="stylesheet" />
     <meta name="theme-color" content="#ffffff">
 </head>
-<body id="color-display">
-    <video id="video" autoplay></video>
-    <canvas id="canvas" style="display:none;"></canvas>
-    <div id="buttons">
-        <a id="flash">
-            <img src="./../../back/images/bolt-solid.svg" alt="Flash" class="button__icon">
-        </a>
-        <a id="take-photo">
-            <img src="./../../back/images/button.png" alt="Prendre une photo" class="button__icon">
-        </a>
-        <a id="switch-camera">
-            <img src="./../../back/images/fleches.svg" alt="Changer de caméra" class="button__icon">
-        </a>
+<body class="camera" id="color-display">
+    
+    
+        <video id="video" autoplay></video>
+        <canvas id="canvas" style="display:none;"></canvas>
+
+        <div id="buttons">
+            <a class="buttonphoto" id="take-photo">
+                <img src="./../../back/images/button.png" alt="Prendre une photo" class="button__icon">
+            </a>
+            <div class="flashswitch">
+                <a id="flash">
+                    <img src="./../../back/images/bolt-solid.svg" alt="Flash" class="button__icon">
+                </a>
+                <a id="switch-camera">
+                    <img src="./../../back/images/fleches.svg" alt="Changer de caméra" class="button__icon">
+                </a>
+            </div>
+
+        
+        
     </div>
     <!-- <p id="color-info"></p> -->
     <script>

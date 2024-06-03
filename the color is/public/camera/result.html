@@ -13,6 +13,7 @@
         <img src="./../../back/images/Logo.png" alt="Logo" style="width: 100px; height: auto;">
     </header>
     <p id="color-info-result"></p>
+    <span id="color-code-result"></span>
     <a class="button type--C" href="./the-color-is.html">
         <div class="button__line"></div>
         <div class="button__line"></div>
@@ -39,7 +40,9 @@
             colorDisplay.style.backgroundColor = color;
 
             const colorInfo = document.getElementById('color-info-result');
-            colorInfo.textContent = `Code hexadécimal: ${color}`;
+            const colorhexa = document.getElementById('color-code-result');
+            colorInfo.textContent = `Code hexadécimal:`;
+            colorhexa.textContent = `${color}`;
 
             // Ajuster la couleur du texte en fonction de la luminosité
             if (brightness < 100) {
