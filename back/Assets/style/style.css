@@ -3,11 +3,31 @@
     padding: 0 ;
     box-sizing: border-box;
 }
+header{
+    position: relative;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    z-index: inherit;
+}
+.logoImage{
+    width: 45vw;
+    height:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
 .type--C {
-    --line_color: #5a5a5a;
+    --line_color: #000000;
     --back_color: #DEFFFA;
 }
-
 .button {
     position: relative;
     z-index: 0;
@@ -81,7 +101,7 @@
     content: '';
     position: absolute;
     top: 0;
-    width: 150%;
+    width: 160%;
     height: 100%;
     box-sizing: border-box;
     border-radius: 300px;
@@ -190,7 +210,130 @@
     width: auto; 
     height: 60px;
 }
-
+.fond{
+    z-index: -2;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: linear-gradient(135deg, #a1c4fd, #FDB0AA);
+}
+.inputimg{
+    background: none;
+    text-decoration: none;
+    border: black solid 5px;
+    width: 80vw;
+    height: 35vh;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    border-radius: 25px;
+    text-align: center;
+}
+.cursorhover:hover{
+    cursor:pointer ;
+}
+@media screen and (min-width:850px){
+   .btnphoto,.flecheretour,.gallery,.imglogo{
+        display: none;
+    }
+}
+@media screen and (min-width: 480px){
+    .inputimg{
+        width: 40vw;
+        height: 45vh;
+    }
+    .giveheader{
+        width:30vw;
+        position: fixed;
+        top:0;
+        left:0;
+    }
+    .importinput{
+        padding-right: 25vh;
+    }
+    .givemain{
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+    }
+    .colorresult{
+        font-size: 35px;
+        text-align: center;
+    }
+    .texteresult{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 40vh;
+    }
+    .btnimport{
+        width: 65vw;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    header{
+        margin:5vh 0;
+    }
+    img{
+        width: auto;
+        height: 100%;
+        object-fit: cover;
+    }
+    main{
+        display: flex;
+        justify-content: space-around;
+        height: 40vh;
+        align-items: center;
+    }
+    .main{
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .mainresult{
+        height: 100vh;
+    }
+    .btnlogo{
+        width:70%;
+        height: 100%;
+    }
+    .button{
+        width: 25vw;
+    }
+    .button__line::before{
+        width:170%;
+    }
+    .colordiv{
+        width: 40vw;
+        height: 50vh;
+        margin: 15vh 0;
+        border:#000000 solid 10px;
+        border-radius: 35px;
+    }
+    .loaderbody{
+        align-content: center;
+        width: 100vw;
+        height: 50vh;
+        text-align: center;
+    }
+    .attentes{
+        width: 100vw;
+        height: 80vh;
+        display: flex;
+        justify-content: center;
+        margin: 35px 0;
+    }
+    .cercle{
+        animation: spin 2s linear infinite;
+    }
+}
 @media screen and (max-width: 480px){
     body {
         margin: 0;
@@ -212,6 +355,19 @@
     body > span{
         font-family: Georgia, 'Times New Roman', Times, serif;
         margin-bottom: 5vh;
+    }
+    .btnlogo,.fondresult,.colordiv,.logogive{
+        display: none;
+    }
+    .header15vh{
+        height: 15vh;
+    }
+    .texteresult{
+        font-size: 35px;
+        text-align: center;
+    }
+    .texteresult span{
+        font-weight: 600;
     }
     .flecheretour{
         position: fixed;
@@ -247,46 +403,9 @@
     #color-display-result{
         height: auto;
     }
-    
-    
-    header{
-        position: relative;
-        width: 100vw;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 40vh;
-        z-index: inherit;
-    }
-    .logoImage{
-        width: 45vw;
-        height:100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    img{
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-    }
-    .inputimg{
-        background: none;
-        text-decoration: none;
-        border: black solid 5px;
-        width: 80vw;
-        height: 35vh;
-        display: flex;
-        align-content: center;
-        justify-content: center;
-        border-radius: 25px;
-        text-align: center;
-    }
-    .giveheader{
-        height:20vh;
-    }
     .givemain{
         height:80vh;
+        justify-content: space-around;
     }
     .procimgbtn{
         
@@ -296,7 +415,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 40vh;
+        height: 60vh;
         position: relative;
         z-index: inherit;
     }
@@ -305,6 +424,9 @@
         margin: 30px 0;
         text-align: center;
         font-family: "Kreon";
+    }
+    .main{
+        height: 40vh;
     }
     button{
         background: none;
@@ -340,15 +462,7 @@
     .photo{
         display: none !important;
     }
-    .fond{
-        z-index: -2;
-        width: 100vw;
-        height: 100vh;
-        position: fixed;
-        top: 0;
-        left: 0;
-        background: linear-gradient(135deg, #a1c4fd, #FDB0AA);
-    }
+    
     .flashswitch{
         position: absolute;
         bottom: 5vh;
