@@ -14,13 +14,22 @@
     </header>
     <p id="color-info-result"></p>
     <span id="color-code-result"></span>
-    <a class="button type--C" id="go-back">
-        <div class="button__line"></div>
-        <div class="button__line"></div>
-        <span class="button__text">Retour</span>
-        <div class="button__drow1"></div>
-        <div class="button__drow2"></div>
-      </a>    
+    <div class="main">
+        <a class="button type--C" id="go-back">
+            <div class="button__line"></div>
+            <div class="button__line"></div>
+            <span class="button__text">Retour</span>
+            <div class="button__drow1"></div>
+            <div class="button__drow2"></div>
+          </a>
+          <a class="button type--C" href="../../index.html">
+            <div class="button__line"></div>
+            <div class="button__line"></div>
+            <span class="button__text">Accueil</span>
+            <div class="button__drow1"></div>
+            <div class="button__drow2"></div>
+          </a>    
+    </div>   
     <script>
         document.getElementById('go-back').addEventListener('click', function() {
             window.history.go(-2); 
@@ -46,11 +55,21 @@
             const colorhexa = document.getElementById('color-code-result');
             colorInfo.textContent = `Code hexadécimal:`;
             colorhexa.textContent = `${color}`;
-
+            const colorborder = document.querySelectorAll('.type--C');
+            console.log(colorborder);
+            // Ajuster la couleur du texte en fonction de la luminosité
             if (brightness < 100) {
-                colorInfo.style.color = "#ffffff"; 
+                colorborder.forEach(element => {
+                    element.style.setProperty('--line_color', '#c1c1c1');// Changer la valeur de la variable CSS '--line_color' en blanc
+                })
+                colorInfo.style.color = "#c1c1c1"; // Blanc pour les couleurs foncées
+                colorhexa.style.color = "#c1c1c1"; // Blanc pour les couleurs foncées
             } else {
-                colorInfo.style.color = "#000000"; 
+                colorInfo.style.color = "#000000"; // Noir pour les couleurs claires
+                colorhexa.style.color = "#000000"; // Noir pour les couleurs claires
+                colorborder.forEach(element => {
+                    element.style.setProperty('--line_color', '#000000');// Changer la valeur de la variable CSS '--line_color' en noir
+                })
             }
         });
 
