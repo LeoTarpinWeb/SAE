@@ -38,6 +38,11 @@ function startGame() {
 }
 
 function startCountdown(callback) {
+    if (currentTurn >= players.length) {
+        callback();
+        return;
+    }
+
     document.getElementById('countdown').style.display = 'block';
     document.getElementById('game').style.display = 'none';
 
