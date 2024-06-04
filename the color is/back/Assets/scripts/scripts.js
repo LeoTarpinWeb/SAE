@@ -32,9 +32,28 @@ function setupPlayers() {
 function startGame() {
     document.getElementById('setup').style.display = 'none';
     document.getElementById('game').style.display = 'block';
-    targetColor = getRandomColor();
+    targetColor = getRandomColor(); 
     document.getElementById('target-color').style.backgroundColor = targetColor;
-    nextTurn();
+    startCountdown(nextTurn);
+}
+
+function startCountdown(callback) {
+    document.getElementById('countdown').style.display = 'block';
+    document.getElementById('game').style.display = 'none';
+
+    let countdown = 3;
+    document.getElementById('countdown-timer').textContent = countdown;
+
+    const countdownInterval = setInterval(() => {
+        countdown--;
+        document.getElementById('countdown-timer').textContent = countdown;
+        if (countdown <= 0) {
+            clearInterval(countdownInterval);
+            document.getElementById('countdown').style.display = 'none';
+            document.getElementById('game').style.display = 'block';
+            callback();
+        }
+    }, 1000);
 }
 
 async function nextTurn() {
@@ -90,7 +109,7 @@ function takePhoto() {
     players[currentTurn].photoColor = dominantColor;
 
     currentTurn++;
-    nextTurn();
+    startCountdown(nextTurn);
 }
 
 function getAverageColor(data) {
@@ -146,10 +165,10 @@ function colorDistance(color1, color2) {
     if (!color1 || !color2) {
         return Infinity;
     }
-    
+
     const rgb1 = color1.match(/\d+/g).map(Number);
     const rgb2 = color2.match(/\d+/g).map(Number);
-    
+
     return Math.sqrt(
         (rgb1[0] - rgb2[0]) ** 2 +
         (rgb1[1] - rgb2[1]) ** 2 +
