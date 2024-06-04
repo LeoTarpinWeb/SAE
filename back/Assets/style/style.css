@@ -38,7 +38,7 @@
     .gallery{
         position: fixed;
         top: 10px;
-        right: 10px;
+        right: 20px;
         width: 15vw;
         height: 15vw;
         z-index: 500;
