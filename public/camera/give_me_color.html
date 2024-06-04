@@ -10,22 +10,30 @@
     <meta name="theme-color" content="#ffffff">
 </head>
 <body>
-    <input type="file" name="image" id="image-input"><br><br>
-    <button id="process-image">Process Image</button><br><br>
-    <a class="button type--C" href="./the-color-is.html">
-        <div class="button__line"></div>
-        <div class="button__line"></div>
-        <span class="button__text">Photo</span>
-        <div class="button__drow1"></div>
-        <div class="button__drow2"></div>
-      </a>  
-    <a class="button type--C" href="./../jeux/find-the-color.html">
-        <div class="button__line"></div>
-        <div class="button__line"></div>
-        <span class="button__text">Trouve la couleur</span>
-        <div class="button__drow1"></div>
-        <div class="button__drow2"></div>
-      </a> 
+    <div class="fond"></div>
+    <a class="flecheretour" href="../../index.html"><img src="../../back/images/arrow-left-solid.svg"> </a>
+    <a class="gallery" href="./the-color-is.html"><img src="../../back/images/camera-solid.svg"> </a>
+    <header class="giveheader"></header>
+    <main class="givemain">
+        <div>
+            <input type="file" class="inputimg" name="image" id="image-input"><br><br>
+        </div>
+        <a class="button type--C procimgbtn" id="process-image">
+            <div class="button__line"></div>
+            <div class="button__line"></div>
+            <span class="button__text">valider</span>
+            <div class="button__drow1"></div>
+            <div class="button__drow2"></div>
+          </a>  
+        <a class="button type--C" href="./../jeux/find-the-color.html">
+            <div class="button__line"></div>
+            <div class="button__line"></div>
+            <span class="button__text">Trouve la couleur</span>
+            <div class="button__drow1"></div>
+            <div class="button__drow2"></div>
+          </a> 
+    </main>
+    
     <script>
         document.getElementById('process-image').addEventListener('click', processImage);
 
