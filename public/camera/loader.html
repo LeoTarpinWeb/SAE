@@ -10,14 +10,16 @@
   <script src="https://kit.fontawesome.com/9d2be48189.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="auto">
+<body class="auto loaderbody">
   <div class="fond">
   </div>
     <div class="attentes">
         <img class="cercle" src="../../back/images/chargement.svg">
-        <span>Chargement des données...</span>
     </div>
+    <span>Chargement des données...</span>
   <script>
+    const cercle = document.querySelector('.cercle');
+
     function getQueryParams() {
       const params = {};
       window.location.search.substring(1).split("&").forEach(pair => {
