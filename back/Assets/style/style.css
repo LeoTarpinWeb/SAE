@@ -6,7 +6,6 @@
 
 @media screen and (max-width: 480px){
     body {
-        background-color: red;
         margin: 0;
         padding: 0;
         height: 100vh;
@@ -45,7 +44,6 @@
     }
     .auto{
         height: auto;
-        background-image: url('./../../images/fond-téléphone.png');
     }
     #color-info-result{
         margin-bottom: 20px;
@@ -64,7 +62,7 @@
     }
     
     .type--C {
-        --line_color: #c1c1c1;
+        --line_color: #5a5a5a;
         --back_color: #DEFFFA;
     }
     
@@ -272,6 +270,27 @@
         height: auto;
         object-fit: cover;
     }
+    .inputimg{
+        background: none;
+        text-decoration: none;
+        border: black solid 5px;
+        width: 80vw;
+        height: 35vh;
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        border-radius: 25px;
+        text-align: center;
+    }
+    .giveheader{
+        height:20vh;
+    }
+    .givemain{
+        height:80vh;
+    }
+    .procimgbtn{
+        
+    }
     main, .main{
         display: flex;
         flex-direction: column;
@@ -321,18 +340,14 @@
     .photo{
         display: none !important;
     }
-    .fond_cadre{
+    .fond{
         z-index: -2;
         width: 100vw;
         height: 100vh;
         position: fixed;
         top: 0;
         left: 0;
-    }
-    .fond{
-        height: auto;
-        width: 100%;
-        object-fit: cover;
+        background: linear-gradient(135deg, #a1c4fd, #FDB0AA);
     }
     .flashswitch{
         position: absolute;
