@@ -20,6 +20,12 @@ document.getElementById('switch-camera').addEventListener('click', () => {
     getMedia();
 });
 
+document.getElementById('next-turn-button').addEventListener('click', () => {
+    document.getElementById('countdown').style.display = 'none';
+    document.getElementById('game').style.display = 'block';
+    nextTurn();
+});
+
 function setupPlayers() {
     const numPlayers = document.getElementById('num-players').value;
     players = Array.from({ length: numPlayers }, () => ({
@@ -34,39 +40,21 @@ function startGame() {
     document.getElementById('game').style.display = 'block';
     targetColor = getRandomColor(); 
     document.getElementById('target-color').style.backgroundColor = targetColor;
-    startCountdown(nextTurn);
+    showNextPlayer();
 }
 
-function startCountdown(callback) {
-    if (currentTurn >= players.length) {
-        callback();
-        return;
-    }
-
-    document.getElementById('countdown').style.display = 'block';
-    document.getElementById('game').style.display = 'none';
-
-    let countdown = 3;
-    document.getElementById('countdown-timer').textContent = countdown;
-
-    const countdownInterval = setInterval(() => {
-        countdown--;
-        document.getElementById('countdown-timer').textContent = countdown;
-        if (countdown <= 0) {
-            clearInterval(countdownInterval);
-            document.getElementById('countdown').style.display = 'none';
-            document.getElementById('game').style.display = 'block';
-            callback();
-        }
-    }, 1000);
-}
-
-async function nextTurn() {
+function showNextPlayer() {
     if (currentTurn >= players.length) {
         endGame();
         return;
     }
 
+    document.getElementById('countdown').style.display = 'block';
+    document.getElementById('game').style.display = 'none';
+    document.getElementById('player-name').textContent = players[currentTurn].name;
+}
+
+async function nextTurn() {
     document.getElementById('player-turn').textContent = `${players[currentTurn].name}, à vous de jouer !`;
     document.getElementById('timer').textContent = '10';
     startTimer();
@@ -114,7 +102,7 @@ function takePhoto() {
     players[currentTurn].photoColor = dominantColor;
 
     currentTurn++;
-    startCountdown(nextTurn);
+    showNextPlayer();
 }
 
 function getAverageColor(data) {
@@ -150,20 +138,21 @@ function endGame() {
     document.getElementById('game').style.display = 'none';
     document.getElementById('result').style.display = 'block';
 
-    let closestPlayer = null;
-    let closestDistance = Infinity;
-
     players.forEach(player => {
-        const distance = colorDistance(targetColor, player.photoColor);
-        player.distance = distance;
-        if (distance < closestDistance) {
-            closestDistance = distance;
-            closestPlayer = player;
-        }
+        player.distance = colorDistance(targetColor, player.photoColor);
+        player.percentage = ((1 - player.distance / 441.67) * 100).toFixed(2);
     });
 
-    const percentage = ((1 - closestDistance / 441.67) * 100).toFixed(2); // 441.67 is the max possible distance in RGB color space
-    document.getElementById('winner').textContent = `Le gagnant est ${closestPlayer.name} avec ${percentage}% de précision !`;
+    players.sort((a, b) => b.percentage - a.percentage);
+
+    const rankingDiv = document.getElementById('ranking');
+    rankingDiv.innerHTML = '';
+    players.forEach((player, index) => {
+        const playerResult = document.createElement('div');
+        playerResult.classList.add('player-result');
+        playerResult.innerHTML = `<span class="rank">${index + 1}.</span> <span class="name">${player.name}</span>: <span class="percentage">${player.percentage}%</span>`;
+        rankingDiv.appendChild(playerResult);
+    });
 }
 
 function colorDistance(color1, color2) {
