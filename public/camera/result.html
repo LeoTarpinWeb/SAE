@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultat de la Couleur</title>
+    <link rel="manifest" href="/manifest.json">
+    <link href="./../../back/Assets/style/style.css" rel="stylesheet" />
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body id="color-display-result">
+    <header>
+        <img src="./../../back/images/Logo.png" alt="Logo" style="width: 100px; height: auto;">
+    </header>
+    <p id="color-info-result"></p>
+    <span id="color-code-result"></span>
+    <div class="main">
+        <a class="button type--C" href="./the-color-is.html">
+            <div class="button__line"></div>
+            <div class="button__line"></div>
+            <span class="button__text">Retour</span>
+            <div class="button__drow1"></div>
+            <div class="button__drow2"></div>
+          </a> 
+          <a class="button type--C" href="/index.html">
+            <div class="button__line"></div>
+            <div class="button__line"></div>
+            <span class="button__text">Accueil</span>
+            <div class="button__drow1"></div>
+            <div class="button__drow2"></div>
+          </a>    
+    </div>
+    
+    <script>
+        function getQueryParams() {
+            const params = {};
+            window.location.search.substring(1).split("&").forEach(pair => {
+                const [key, value] = pair.split("=");
+                params[decodeURIComponent(key)] = decodeURIComponent(value);
+            });
+            return params;
+        }
+
+        window.addEventListener('load', () => {
+            const params = getQueryParams();
+            const color = params.color || "#000000";
+            const brightness = parseFloat(params.brightness) || 255;
+
+            const colorDisplay = document.getElementById('color-display-result');
+            colorDisplay.style.backgroundColor = color;
+
+            const colorInfo = document.getElementById('color-info-result');
+            const colorhexa = document.getElementById('color-code-result');
+            colorInfo.textContent = `Code hexadécimal:`;
+            colorhexa.textContent = `${color}`;
+            const colorborder = document.querySelectorAll('.type--C');
+            console.log(colorborder);
+            // Ajuster la couleur du texte en fonction de la luminosité
+            if (brightness < 100) {
+                colorborder.forEach(element => {
+                    element.style.setProperty('--line_color', '#c1c1c1');// Changer la valeur de la variable CSS '--line_color' en blanc
+                })
+                colorInfo.style.color = "#c1c1c1"; // Blanc pour les couleurs foncées
+                colorhexa.style.color = "#c1c1c1"; // Blanc pour les couleurs foncées
+            } else {
+                colorInfo.style.color = "#000000"; // Noir pour les couleurs claires
+                colorhexa.style.color = "#000000"; // Noir pour les couleurs claires
+                colorborder.forEach(element => {
+                    element.style.setProperty('--line_color', '#000000');// Changer la valeur de la variable CSS '--line_color' en noir
+                })
+            }
+        });
+
+    </script>
+</body>
+</html>

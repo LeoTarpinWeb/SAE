@@ -1,0 +1,407 @@
+*{
+    margin: 0 ;
+    padding: 0 ;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 480px){
+    body {
+        background-color: red;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        background-color: #ffffff;
+        z-index: 10;
+        position: relative;
+    }
+    body > p{
+        font-weight: 600;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    body > span{
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        margin-bottom: 5vh;
+    }
+    .arrow-left {
+        position: absolute;
+        top: 10px;
+        left: 5px;
+        width: 0; 
+        height: 0; 
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-left: 20px solid #c1c1c1;
+        transform: rotate(180deg);
+        z-index: 500;
+    }
+
+    .arrow-left::before, .arrow-left::after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 4px;
+        background-color: #c1c1c1;
+    }
+
+    .arrow-left::before {
+        top: 10px;
+        left: 10px;
+    }
+
+    .arrow-left::after {
+        transform: rotate(-45deg);
+        bottom: 8px;
+        left: 0;
+    }
+    .auto{
+        height: auto;
+        background-image: url('./../../images/fond-téléphone.png');
+    }
+    #color-info-result{
+        margin-bottom: 20px;
+    }
+    #video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    
+    }
+    #color-display-result{
+        height: auto;
+    }
+    
+    .type--C {
+        --line_color: #c1c1c1;
+        --back_color: #DEFFFA;
+    }
+    
+    .button {
+        position: relative;
+        z-index: 0;
+        width: 70vw;
+        height: 9vh;
+        border-radius: 28px; /* Rounded corners */
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: bold;
+        color: var(--line_color);
+        letter-spacing: 2px;
+        transition: all 0.3s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden; /* To handle rounded corners properly */
+    }
+    .button__text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .button::before,
+    .button::after,
+    .button__text::before,
+    .button__text::after {
+        content: '';
+        position: absolute;
+        height: 3px;
+        border-radius: 2px;
+        background: var(--line_color);
+        transition: all 0.5s ease;
+    }
+    
+    .button::before {
+        top: 0;
+        left: 54px;
+        width: calc(100% - 56px * 2 - 16px);
+    }
+    
+    .button::after {
+        top: 0;
+        right: 54px;
+        width: 8px;
+    }
+    
+    .button__text::before {
+        bottom: 0;
+        right: 54px;
+        width: calc(100% - 56px * 2 - 16px);
+    }
+    
+    .button__text::after {
+        bottom: 0;
+        left: 54px;
+        width: 8px;
+    }
+    
+    .button__line {
+        position: absolute;
+        top: 0;
+        width: 56px;
+        height: 100%;
+        overflow: hidden;
+    }
+    
+    .button__line::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        width: 150%;
+        height: 100%;
+        box-sizing: border-box;
+        border-radius: 300px;
+        border: solid 3px var(--line_color);
+    }
+    
+    .button__line:nth-child(1),
+    .button__line:nth-child(1)::before {
+        left: 0;
+    }
+    
+    .button__line:nth-child(2),
+    .button__line:nth-child(2)::before {
+        right: 0;
+    }
+    
+    .button__drow1,
+    .button__drow2 {
+        position: absolute;
+        z-index: -1;
+        border-radius: 16px;
+        transform-origin: 16px 16px;
+    }
+    
+    .button__drow1 {
+        top: -16px;
+        left: 40px;
+        width: 32px;
+        height: 0;
+        transform: rotate(30deg);
+    }
+    
+    .button__drow2 {
+        top: 44px;
+        left: 77px;
+        width: 32px;
+        height: 0;
+        transform: rotate(-127deg);
+    }
+    
+    .button__drow1::before,
+    .button__drow1::after,
+    .button__drow2::before,
+    .button__drow2::after {
+        content: '';
+        position: absolute;
+    }
+    
+    .button__drow1::before {
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 32px;
+        border-radius: 16px;
+        transform-origin: 16px 16px;
+        transform: rotate(-60deg);
+    }
+    
+    .button__drow1::after {
+        top: -10px;
+        left: 45px;
+        width: 0;
+        height: 32px;
+        border-radius: 16px;
+        transform-origin: 16px 16px;
+        transform: rotate(69deg);
+    }
+    
+    .button__drow2::before {
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 32px;
+        border-radius: 16px;
+        transform-origin: 16px 16px;
+        transform: rotate(-146deg);
+    }
+    
+    .button__drow2::after {
+        bottom: 26px;
+        left: -40px;
+        width: 0;
+        height: 32px;
+        border-radius: 16px;
+        transform-origin: 16px 16px;
+        transform: rotate(-262deg);
+    }
+    
+    .button__drow1,
+    .button__drow1::before,
+    .button__drow1::after,
+    .button__drow2,
+    .button__drow2::before,
+    .button__drow2::after {
+        background: var(--back_color);
+    }
+    
+    #buttons {
+        margin-top: 20px;
+        display: flex;
+        text-align: center;
+        gap: 40px;
+        z-index: 100;
+    }
+    .button__icon {
+        width: auto; 
+        height: 60px;
+    }
+    
+    header{
+        position: relative;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40vh;
+        z-index: inherit;
+    }
+    .logoImage{
+        width: 45vw;
+        height:100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    img{
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+    main, .main{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 40vh;
+        position: relative;
+        z-index: inherit;
+    }
+    main a, .main a{
+        padding: 5px 0;
+        margin: 30px 0;
+        text-align: center;
+        font-family: "Kreon";
+    }
+    button{
+        background: none;
+        border: 0;
+    }
+    .buttonphoto{
+        width: 30vw;
+        height: 30vw;
+        background-image: url("./../../images/try3-button.png");
+        border: 10px solid #FFFFFF;
+        border-radius: 50%;
+        padding: 0;
+        position: absolute;
+        bottom:10vh
+    }
+    a img{
+        height: 100% !important;
+        width: auto;
+        object-fit: cover;
+    }
+    .camera{
+        width: 100vw;
+        height:100vh;
+    }
+    .camera > div {
+        height: 100vh;
+        width: 100vw;
+        justify-content: end;
+        display: flex;
+        justify-content: center;
+        align-items: end;
+    }
+    .photo{
+        display: none !important;
+    }
+    .fond_cadre{
+        z-index: -2;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+    .fond{
+        height: auto;
+        width: 100%;
+        object-fit: cover;
+    }
+    .flashswitch{
+        position: absolute;
+        bottom: 5vh;
+        display: flex;
+        width: 80%;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .flashswitch a{
+        width: 15vw;
+        height: 15vw;
+    }
+    .attentes {
+        margin-top: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+    }
+    
+    .attentes img.cercle {
+        width: 80vw;
+        height: 80vw;
+        animation: spin 2s linear infinite;
+    }
+    
+    .attentes span {
+        margin-top: 20px;
+        font-size: 1.8em;
+        color: #000;
+    }
+    .attentes > img:first-child{
+        width: auto;
+        object-fit: cover;
+        z-index:0
+    }
+    .attentes img:last-child {
+        width: 80vw;
+        height: 80vw;
+        z-index: 2;
+        animation: spin 2s linear infinite;
+    }
+    .result{
+        display: none !important;
+    }
+}
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
