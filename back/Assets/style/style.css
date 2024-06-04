@@ -27,36 +27,13 @@
         font-family: Georgia, 'Times New Roman', Times, serif;
         margin-bottom: 5vh;
     }
-    .arrow-left {
-        position: absolute;
-        top: 10px;
-        left: 5px;
-        width: 0; 
-        height: 0; 
-        border-top: 10px solid transparent;
-        border-bottom: 10px solid transparent;
-        border-left: 20px solid #c1c1c1;
-        transform: rotate(180deg);
-        z-index: 500;
-    }
-
-    .arrow-left::before, .arrow-left::after {
-        content: '';
-        position: absolute;
-        width: 20px;
-        height: 4px;
-        background-color: #c1c1c1;
-    }
-
-    .arrow-left::before {
+    .flecheretour{
+        position: fixed;
         top: 10px;
         left: 10px;
-    }
-
-    .arrow-left::after {
-        transform: rotate(-45deg);
-        bottom: 8px;
-        left: 0;
+        width: 15vw;
+        height: 15vw;
+        z-index: 500;
     }
     .auto{
         height: auto;
