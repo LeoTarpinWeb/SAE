@@ -8,31 +8,45 @@
     <link href="./../../back/Assets/style/style.css" rel="stylesheet" />
     <meta name="theme-color" content="#ffffff">
 </head>
-<body id="color-display-result">
-    <header>
-        <img src="./../../back/images/Logo.png" alt="Logo" style="width: 100px; height: auto;">
+<body class="color-display-result">
+    <div class="fond fondresult"></div>
+    <header class="giveheader">
+        <div class="logoImage">
+            <a class="btnlogo" href="../../index.html"> <img src="../../back/images/Logo.png"></a>
+            <img class="btnphoto" src="../../back/images/Logo.png">
+        </div>
     </header>
-    <p id="color-info-result"></p>
-    <span id="color-code-result"></span>
-    <div class="main">
-        <a class="button type--C" id="go-back">
-            <div class="button__line"></div>
-            <div class="button__line"></div>
-            <span class="button__text">Retour</span>
-            <div class="button__drow1"></div>
-            <div class="button__drow2"></div>
-          </a>
-          <a class="button type--C" href="../../index.html">
-            <div class="button__line"></div>
-            <div class="button__line"></div>
-            <span class="button__text">Accueil</span>
-            <div class="button__drow1"></div>
-            <div class="button__drow2"></div>
-          </a>    
-    </div>   
+    <main class="mainresult">
+        <div class="texteresult">
+            <p class="colorresult" id="color-info-result"></p>
+            <span class="colorresult" id="color-code-result"></span>
+        </div>
+        <div class="main" >
+            <div class="color-display-result colordiv"></div>
+            <a class="button type--C cursorhover" id="go-back">
+                <div class="button__line"></div>
+                <div class="button__line"></div>
+                <span class="button__text">Retour</span>
+                <div class="button__drow1"></div>
+                <div class="button__drow2"></div>
+            </a>
+            <a class="button type--C btnphoto cursorhover" href="../../index.html">
+                <div class="button__line"></div>
+                <div class="button__line"></div>
+                <span class="button__text">Accueil</span>
+                <div class="button__drow1"></div>
+                <div class="button__drow2"></div>
+            </a>    
+        </div>   
+    </main>
     <script>
         document.getElementById('go-back').addEventListener('click', function() {
-            window.history.go(-2); 
+            if(window.history.go(-2)!= null){
+                window.history.go(-2);
+            }
+            else{
+                window.location.href = 'give_me_color.html';
+            }
         });
         function getQueryParams() {
             const params = {};
@@ -48,8 +62,11 @@
             const color = params.color || "#000000";
             const brightness = parseFloat(params.brightness) || 255;
 
-            const colorDisplay = document.getElementById('color-display-result');
-            colorDisplay.style.backgroundColor = color;
+            const colorDisplay = document.querySelectorAll('.color-display-result');
+            console.log(colorDisplay);
+            colorDisplay.forEach(element =>{
+                element.style.backgroundColor = color;
+            });
 
             const colorInfo = document.getElementById('color-info-result');
             const colorhexa = document.getElementById('color-code-result');
