@@ -17,13 +17,13 @@
             <button type="submit">Commencer le jeu</button>
        
         <h2>Règle du jeu</h2>
-        <p>En tour par tour, chacun des joueurs(euses) devront prendre en photo la couleur se rapprochant le plus de celle affichée à l’écran.  Vous avez 10 secondes pour trouver une couleur. au bout du temps impartie une photo sera prise automatiquement et sa sera le tour du prochain joueur.</p> </form>
+        <p>En tour par tour, chacun des joueurs(euses) devront prendre en photo la couleur se rapprochant le plus de celle affichée à l’écran. Vous avez 10 secondes pour trouver une couleur. Au bout du temps imparti, une photo sera prise automatiquement et ce sera le tour du prochain joueur.</p> 
+        </form>
     </div>
 
     <div id="countdown" style="display: none;">
-        <h1>Préparez-vous !</h1>
-
-        <div class="countdown-timer" id="countdown-timer">3</div>
+        <h1>Préparez-vous, <span id="player-name"></span> !</h1>
+        <button id="next-turn-button">Prêt ?</button>
     </div>
 
     <div id="game" style="display: none;">
@@ -45,7 +45,7 @@
 
     <div id="result" style="display: none;">
         <h2>Résultat</h2>
-        <div id="winner"></div>
+        <div id="ranking"></div>
         <button id="play-again">Rejouer</button>
     </div>
 
