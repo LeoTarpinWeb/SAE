@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The color is</title>
+    <link rel="manifest" href="/manifest.json">
+    <link href="./../../back/Assets/style/style.css" rel="stylesheet" />
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+    <input type="file" name="image" id="image-input"><br><br>
+    <button id="process-image">Process Image</button><br><br>
+    <a class="button type--C" href="./the-color-is.html">
+        <div class="button__line"></div>
+        <div class="button__line"></div>
+        <span class="button__text">Photo</span>
+        <div class="button__drow1"></div>
+        <div class="button__drow2"></div>
+      </a>  
+    <a class="button type--C" href="./../jeux/find-the-color.html">
+        <div class="button__line"></div>
+        <div class="button__line"></div>
+        <span class="button__text">Trouve la couleur</span>
+        <div class="button__drow1"></div>
+        <div class="button__drow2"></div>
+      </a> 
+    <script>
+        document.getElementById('process-image').addEventListener('click', processImage);
+
+        function processImage() {
+            const fileInput = document.getElementById('image-input');
+            const file = fileInput.files[0];
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                
+                reader.onload = function () {
+                    const image = new Image();
+                    image.src = reader.result;
+
+                    image.onload = function () {
+                        const canvas = document.createElement('canvas');
+                        const context = canvas.getContext('2d');
+
+                        canvas.width = image.width;
+                        canvas.height = image.height;
+
+                        context.drawImage(image, 0, 0);
+
+                        const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+                        const data = imageData.data;
+
+                        const colorCounts = {};
+                        let maxColorCount = 0;
+                        let dominantColor = [0, 0, 0];
+                        let brightness = 0;
+
+                        for (let i = 0; i < data.length; i += 4) {
+                            const r = data[i];
+                            const g = data[i + 1];
+                            const b = data[i + 2];
+                            brightness += (r + g + b) / 3;
+
+                            const rgb = [r, g, b].join(",");
+                            colorCounts[rgb] = (colorCounts[rgb] || 0) + 1;
+
+                            if (colorCounts[rgb] > maxColorCount) {
+                                maxColorCount = colorCounts[rgb];
+                                dominantColor = [r, g, b];
+                            }
+                        }
+
+                        brightness /= (canvas.width * canvas.height);
+
+                        const hexColor = `#${dominantColor.map(x => x.toString(16).padStart(2, '0')).join('')}`;
+
+                        window.location.href = `loader.html?color=${encodeURIComponent(hexColor)}&brightness=${encodeURIComponent(brightness)}`;
+                    }
+                };
+            }
+        }
+    </script>
+</body>
+</html>
