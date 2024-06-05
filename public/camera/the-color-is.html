@@ -9,86 +9,28 @@
     <meta name="theme-color" content="#ffffff">
 </head>
 <body class="camera" id="color-display">
-    
-    <a class="flecheretour" href="../../index.html"><img src="../../back/images/arrow-left-solid.svg"> </a>
-    <a class="gallery" href="./give_me_color.html"><img src="../../back/images/images-solid.svg"> </a>
-    <video id="video" autoplay></video>
-    <canvas id="canvas" style="display:none;"></canvas>
 
-    <div id="buttons">
-        <a class="buttonphoto" id="take-photo">
-            <img src="./../../back/images/button.png" alt="Prendre une photo" class="button__icon">
-        </a>
-        <div class="flashswitch">
-            <a id="camera">
-                <img src="./../../back/images/camera-solid.svg" alt="Camera" class="button__icon">
+        <a class="flecheretour" href="../../index.html"><img src="../../back/images/arrow-left-solid.svg"> </a>
+        <a class="gallery" href="./give_me_color.html"><img src="../../back/images/images-solid.svg"> </a>
+        <video id="video" autoplay></video>
+        <canvas id="canvas" style="display:none;"></canvas>
+
+        <div id="buttons">
+            <a class="buttonphoto" id="take-photo">
+                <img src="./../../back/images/button.png" alt="Prendre une photo" class="button__icon">
             </a>
-            <a id="switch-camera">
-                <img src="./../../back/images/fleches.svg" alt="Changer de caméra" class="button__icon">
-            </a>
-        </div>
+            <div class="flashswitch">
+                <a id="flash">
+                    <img src="./../../back/images/bolt-solid.svg" alt="Flash" class="button__icon">
+                </a>
+                <a id="switch-camera">
+                    <img src="./../../back/images/fleches.svg" alt="Changer de caméra" class="button__icon">
+                </a>
+            </div>
+        
+        
     </div>
-    
-    <input type="file" id="camera-input" accept="image/*" capture="camera" style="display:none;" onchange="processImage(event)">
-    
+    <!-- <p id="color-info"></p> -->
     <script src="./../../back/Assets/scripts/script.js"></script>
-    <script>
-        document.getElementById('camera').addEventListener('click', function() {
-            document.getElementById('camera-input').click();
-        });
-
-        function processImage(event) {
-            const file = event.target.files[0];
-            
-            if (file) {
-                const reader = new FileReader();
-                reader.readAsDataURL(file);
-                
-                reader.onload = function () {
-                    const image = new Image();
-                    image.src = reader.result;
-
-                    image.onload = function () {
-                        const canvas = document.createElement('canvas');
-                        const context = canvas.getContext('2d');
-
-                        canvas.width = image.width;
-                        canvas.height = image.height;
-
-                        context.drawImage(image, 0, 0);
-
-                        const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-                        const data = imageData.data;
-
-                        const colorCounts = {};
-                        let maxColorCount = 0;
-                        let dominantColor = [0, 0, 0];
-                        let brightness = 0;
-
-                        for (let i = 0; i < data.length; i += 4) {
-                            const r = data[i];
-                            const g = data[i + 1];
-                            const b = data[i + 2];
-                            brightness += (r + g + b) / 3;
-
-                            const rgb = [r, g, b].join(",");
-                            colorCounts[rgb] = (colorCounts[rgb] || 0) + 1;
-
-                            if (colorCounts[rgb] > maxColorCount) {
-                                maxColorCount = colorCounts[rgb];
-                                dominantColor = [r, g, b];
-                            }
-                        }
-
-                        brightness /= (canvas.width * canvas.height);
-
-                        const hexColor = `#${dominantColor.map(x => x.toString(16).padStart(2, '0')).join('')}`;
-
-                        window.location.href = `loader.html?color=${encodeURIComponent(hexColor)}&brightness=${encodeURIComponent(brightness)}`;
-                    }
-                };
-            }
-        }
-    </script>
 </body>
 </html>
