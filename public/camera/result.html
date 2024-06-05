@@ -67,27 +67,29 @@
             colorDisplay.forEach(element =>{
                 element.style.backgroundColor = color;
             });
-
-            const colorInfo = document.getElementById('color-info-result');
-            const colorhexa = document.getElementById('color-code-result');
-            colorInfo.textContent = `Code hexadécimal:`;
-            colorhexa.textContent = `${color}`;
-            const colorborder = document.querySelectorAll('.type--C');
-            console.log(colorborder);
-            // Ajuster la couleur du texte en fonction de la luminosité
-            if (brightness < 100) {
-                colorborder.forEach(element => {
-                    element.style.setProperty('--line_color', '#c1c1c1');// Changer la valeur de la variable CSS '--line_color' en blanc
-                })
-                colorInfo.style.color = "#c1c1c1"; // Blanc pour les couleurs foncées
-                colorhexa.style.color = "#c1c1c1"; // Blanc pour les couleurs foncées
-            } else {
-                colorInfo.style.color = "#000000"; // Noir pour les couleurs claires
-                colorhexa.style.color = "#000000"; // Noir pour les couleurs claires
-                colorborder.forEach(element => {
-                    element.style.setProperty('--line_color', '#000000');// Changer la valeur de la variable CSS '--line_color' en noir
-                })
+            if(window.screen.width <= '750px'){
+                const colorInfo = document.getElementById('color-info-result');
+                const colorhexa = document.getElementById('color-code-result');
+                colorInfo.textContent = `Code hexadécimal:`;
+                colorhexa.textContent = `${color}`;
+                const colorborder = document.querySelectorAll('.type--C');
+                console.log(colorborder);
+                // Ajuster la couleur du texte en fonction de la luminosité
+                if (brightness < 100) {
+                    colorborder.forEach(element => {
+                        element.style.setProperty('--line_color', '#c1c1c1');// Changer la valeur de la variable CSS '--line_color' en blanc
+                    })
+                    colorInfo.style.color = "#c1c1c1"; // Blanc pour les couleurs foncées
+                    colorhexa.style.color = "#c1c1c1"; // Blanc pour les couleurs foncées
+                } else {
+                    colorInfo.style.color = "#000000"; // Noir pour les couleurs claires
+                    colorhexa.style.color = "#000000"; // Noir pour les couleurs claires
+                    colorborder.forEach(element => {
+                        element.style.setProperty('--line_color', '#000000');// Changer la valeur de la variable CSS '--line_color' en noir
+                    })
+                }
             }
+            
         });
 
     </script>
