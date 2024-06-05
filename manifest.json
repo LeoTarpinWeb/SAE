@@ -10,12 +10,12 @@
       {
         "src": "/back/images/icone_192x192.webp",
         "sizes": "192x192",
-        "type": "image/png"
+        "type": "image/webp"
       },
       {
         "src": "/back/images/icone_512x512.webp",
         "sizes": "512x512",
-        "type": "image/png"
+        "type": "image/webp"
       }
     ]
   }
