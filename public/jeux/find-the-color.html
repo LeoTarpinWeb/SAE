@@ -14,7 +14,8 @@
         <form id="player-setup">
             <label for="num-players">Nombre de joueurs:</label>
             <input type="number" id="num-players" name="num-players" min="1" max="10" required>
-            <button type="submit">Commencer le jeu</button>
+            
+            <button type="submit" class="button">Jouer</button>
        
         <h2>Règle du jeu</h2>
         <p>En tour par tour, chacun des joueurs(euses) devront prendre en photo la couleur se rapprochant le plus de celle affichée à l’écran. Vous avez 10 secondes pour trouver une couleur. Au bout du temps imparti, une photo sera prise automatiquement et ce sera le tour du prochain joueur.</p> 
@@ -22,23 +23,34 @@
     </div>
 
     <div id="countdown" style="display: none;">
+        <div class="logoImageJeux">
+            <img class="btnphotojeux" src="../../back/images/Logo.png">
+        </div>
         <h1>Préparez-vous, <span id="player-name"></span> !</h1>
-        <button id="next-turn-button">Prêt ?</button>
+        <button id="next-turn-button" class="buttonJeux">Commencer</button>
     </div>
 
     <div id="game" style="display: none;">
         <div class="game-container">
+            <div class="timer-container">
+                <p>Temps restant: <span id="timer">10</span> secondes</p>
+            </div>
             <div class="game-content" id="game-content">
                 <h2 id="player-turn"></h2>
                 <p>Photographiez cette couleur:</p>
                 <div id="target-color" class="color-box"></div>
                 <video id="video" autoplay></video>
                 <canvas id="canvas" style="display:none;"></canvas>
-                <button id="take-photo">Prendre une photo</button>
-                <button id="switch-camera">Changer de caméra</button>
-            </div>
-            <div class="timer-container">
-                <p>Temps restant: <span id="timer">10</span> secondes</p>
+                <div id="buttons">
+                    <a class="buttonphoto" id="take-photo">
+                        <img src="./../../back/images/button.png" alt="Prendre une photo" class="button__icon">
+                    </a>
+                    <div class="flashswitch">
+                        <a id="switch-camera">
+                            <img src="./../../back/images/fleches.svg" alt="Changer de caméra" class="button__icon">
+                        </a>
+                    </div>    
+                </div>
             </div>
         </div>
     </div>
