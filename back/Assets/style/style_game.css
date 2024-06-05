@@ -66,10 +66,9 @@ button:hover {
 }
 
 #video {
-    width: 300px;
-    height: 200px;
+    width: 250px;  /* Changed width */
+    height: 450px;  /* Changed height */
     background-color: #ccc;
-    margin-bottom: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -82,13 +81,18 @@ button:hover {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    height: 100vh;
+    width: 100vw;
 }
 
 .timer-container {
-    position: absolute;
-    top: 20px;
+    /* position: absolute;
+    top: 10px; */
     font-size: 24px;
-    color: #333;
+    z-index: 10;
+    text-align: center;
+    width: 100%;
 }
 
 #result {
@@ -105,4 +109,67 @@ button:hover {
     font-size: 24px;
     margin-bottom: 20px;
     color: #333;
+}
+
+#countdown {
+    text-align: center;
+}
+
+.logoImageJeux {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+
+.btnphotojeux {
+    width: 200px;
+    height: auto;
+}
+
+#buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 2vh;
+    width: 100%;
+}
+
+.buttonphoto {
+    width: 20vw;
+    height: 20vw;
+    border: 10px solid #FFFFFF;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+a img {
+    height: 100% !important;
+    width: auto;
+    object-fit: cover;
+}
+
+.flashswitch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+}
+
+.flashswitch a {
+    width: 15vw;
+    height: 15vw;
+}
+
+#game-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
 }
