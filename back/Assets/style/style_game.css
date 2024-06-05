@@ -134,6 +134,7 @@ button:hover {
     position: absolute;
     bottom: 2vh;
     width: 100%;
+    margin-left: 80px;
 }
 
 .buttonphoto {
