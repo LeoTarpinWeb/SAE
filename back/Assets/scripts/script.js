@@ -1,7 +1,7 @@
 
 let currentStream;
 let useFrontCamera = true;
-
+let flashOn = false;
 document.getElementById('camera').addEventListener('click', function() {
     document.getElementById('camera-input').click();
 });
@@ -78,7 +78,11 @@ document.getElementById('switch-camera').addEventListener('click', () => {
     getMedia();
 });
 
-
+document.getElementById('flash').addEventListener('click', async () => {
+    flashOn = !flashOn;
+    const track = currentStream.getVideoTracks()[0];
+    await track.applyConstraints({ advanced: [{ torch: flashOn }] });
+});
 
 document.getElementById('take-photo').addEventListener('click', processImage);
 
