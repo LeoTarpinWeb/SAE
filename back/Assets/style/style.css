@@ -239,7 +239,7 @@ img{
         display: none;
     }
 }
-@media screen and (min-width: 480px){
+@media screen and (min-width: 750px){
     .inputimg{
         width: 40vw;
         height: 45vh;
@@ -334,7 +334,7 @@ img{
         animation: spin 2s linear infinite;
     }
 }
-@media screen and (max-width: 480px){
+@media screen and (max-width: 750px){
     body {
         margin: 0;
         padding: 0;
