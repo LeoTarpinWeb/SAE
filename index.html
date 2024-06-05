@@ -43,30 +43,19 @@
           </a>  
     </main>
     <script>
-        let deferredPrompt;
       
         window.addEventListener('beforeinstallprompt', (e) => {
-          // Empêchez le navigateur d'afficher automatiquement la bannière d'installation
-          e.preventDefault();
-          // Stockez l'événement pour l'utiliser plus tard
-          deferredPrompt = e;
-          // Affichez votre interface utilisateur personnalisée pour proposer l'installation
-          document.getElementById('install-button').style.display = 'block';
-        });
-      
-        document.getElementById('install-button').addEventListener('click', (e) => {
           // Masquez l'interface utilisateur de l'installation
           document.getElementById('install-button').style.display = 'none';
           // Affichez la bannière d'installation
-          deferredPrompt.prompt();
+          e.prompt();
           // Attendez la réponse de l'utilisateur
-          deferredPrompt.userChoice.then((choiceResult) => {
+          e.userChoice.then((choiceResult) => {
             if (choiceResult.outcome === 'accepted') {
               console.log('Utilisateur a accepté l\'installation');
             } else {
               console.log('Utilisateur a refusé l\'installation');
             }
-            deferredPrompt = null;
           });
         });
       </script>
