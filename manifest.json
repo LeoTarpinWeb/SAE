@@ -1,6 +1,6 @@
 {
     "name": "This color is",
-    "short_name": "TCI",
+    "short_name": "This color is",
     "description": "une application permettant de trouver le code hexadécimal d'une couleur prise en photo",
     "start_url": "/index.html",
     "display": "standalone",
