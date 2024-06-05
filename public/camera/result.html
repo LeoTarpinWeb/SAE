@@ -41,12 +41,9 @@
     </main>
     <script>
         document.getElementById('go-back').addEventListener('click', function() {
-            if(window.history.go(-2)!= null){
                 window.history.go(-2);
-            }
-            else{
-                window.location.href = 'give_me_color.html';
-            }
+            
+            
         });
         function getQueryParams() {
             const params = {};
@@ -73,7 +70,6 @@
                 colorhexa.textContent = `${color}`;
             if(window.screen.width <= '750px'){
                 const colorborder = document.querySelectorAll('.type--C');
-                console.log(colorborder);
                 // Ajuster la couleur du texte en fonction de la luminosité
                 if (brightness < 100) {
                     colorborder.forEach(element => {
