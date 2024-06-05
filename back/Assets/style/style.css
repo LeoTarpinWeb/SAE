@@ -407,9 +407,6 @@ img{
         height:80vh;
         justify-content: space-around;
     }
-    .procimgbtn{
-        
-    }
     main, .main{
         display: flex;
         flex-direction: column;
