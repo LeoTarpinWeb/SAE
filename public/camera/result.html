@@ -41,9 +41,12 @@
     </main>
     <script>
         document.getElementById('go-back').addEventListener('click', function() {
+            if(window.history.go(-2)!= null){
                 window.history.go(-2);
-            
-            
+            }
+            else{
+                window.location.href = 'give_me_color.html';
+            }
         });
         function getQueryParams() {
             const params = {};
@@ -70,17 +73,25 @@
                 colorhexa.textContent = `${color}`;
             if(window.screen.width <= '750px'){
                 const colorborder = document.querySelectorAll('.type--C');
+                console.log(colorborder);
                 // Ajuster la couleur du texte en fonction de la luminosité
                 if (brightness < 100) {
+                    console.log("hello");
                     colorborder.forEach(element => {
+                        console.log("hello1");
                         element.style.setProperty('--line_color', '#c1c1c1');// Changer la valeur de la variable CSS '--line_color' en blanc
                     })
+                    console.log("hello2");
                     colorInfo.style.color = "#c1c1c1"; // Blanc pour les couleurs foncées
                     colorhexa.style.color = "#c1c1c1"; // Blanc pour les couleurs foncées
+                    console.log("hello3");
                 } else {
+                    console.log("helloA");
                     colorInfo.style.color = "#000000"; // Noir pour les couleurs claires
                     colorhexa.style.color = "#000000"; // Noir pour les couleurs claires
+                    console.log("helloB");
                     colorborder.forEach(element => {
+                        console.log("helloC");
                         element.style.setProperty('--line_color', '#000000');// Changer la valeur de la variable CSS '--line_color' en noir
                     })
                 }
