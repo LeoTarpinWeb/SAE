@@ -67,11 +67,11 @@
             colorDisplay.forEach(element =>{
                 element.style.backgroundColor = color;
             });
-            if(window.screen.width <= '750px'){
                 const colorInfo = document.getElementById('color-info-result');
                 const colorhexa = document.getElementById('color-code-result');
                 colorInfo.textContent = `Code hexadécimal:`;
                 colorhexa.textContent = `${color}`;
+            if(window.screen.width <= '750px'){
                 const colorborder = document.querySelectorAll('.type--C');
                 console.log(colorborder);
                 // Ajuster la couleur du texte en fonction de la luminosité
