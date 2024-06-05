@@ -6,12 +6,14 @@
     <title>Accueil</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="manifest" href="/manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Kreon:wght@300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="back/Assets/style/style.css">
 </head>
 <body>
     <div class="fond">
     </div>
+    <button id="install-button" style="display:none;">Installer l'application</button>
     <header>
         <div class="logoImage">
             <img src="back/images/Logo.png">
@@ -40,5 +42,33 @@
             <div class="button__drow2"></div>
           </a>  
     </main>
+    <script>
+        let deferredPrompt;
+      
+        window.addEventListener('beforeinstallprompt', (e) => {
+          // Empêchez le navigateur d'afficher automatiquement la bannière d'installation
+          e.preventDefault();
+          // Stockez l'événement pour l'utiliser plus tard
+          deferredPrompt = e;
+          // Affichez votre interface utilisateur personnalisée pour proposer l'installation
+          document.getElementById('install-button').style.display = 'block';
+        });
+      
+        document.getElementById('install-button').addEventListener('click', (e) => {
+          // Masquez l'interface utilisateur de l'installation
+          document.getElementById('install-button').style.display = 'none';
+          // Affichez la bannière d'installation
+          deferredPrompt.prompt();
+          // Attendez la réponse de l'utilisateur
+          deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+              console.log('Utilisateur a accepté l\'installation');
+            } else {
+              console.log('Utilisateur a refusé l\'installation');
+            }
+            deferredPrompt = null;
+          });
+        });
+      </script>
 </body>
 </html>
