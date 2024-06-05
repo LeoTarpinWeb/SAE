@@ -13,7 +13,7 @@
 <body>
     <div class="fond">
     </div>
-    <button id="install-button" style="display:none;">Installer l'application</button>
+    
     <header>
         <div class="logoImage">
             <img src="back/images/Logo.png">
@@ -41,8 +41,15 @@
             <div class="button__drow1"></div>
             <div class="button__drow2"></div>
           </a>  
+          <button id="install-button"  class="button type--C" style="display:none;" >
+            <div class="button__line"></div>
+            <div class="button__line"></div>
+            <span class="button__text">Installer l'application</span>
+            <div class="button__drow1"></div>
+            <div class="button__drow2"></div>
+          </button>
     </main>
-   <script>
+    <script>
         let deferredPrompt;
       
         window.addEventListener('beforeinstallprompt', (e) => {
