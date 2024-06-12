@@ -432,7 +432,6 @@ img{
     .buttonphoto{
         width: 30vw;
         height: 30vw;
-        background-image: url("./../../images/try3-button.png");
         border: 10px solid #FFFFFF;
         border-radius: 50%;
         padding: 0;
