@@ -1,7 +1,5 @@
-
 let currentStream;
 let useFrontCamera = true;
-let flashOn = false;
 
 async function getMedia() {
     if (currentStream) {
@@ -9,8 +7,7 @@ async function getMedia() {
     }
     const constraints = {
         video: {
-            facingMode: useFrontCamera ? "user" : "environment",
-            torch: flashOn
+            facingMode: useFrontCamera ? "user" : "environment"
         }
     };
     currentStream = await navigator.mediaDevices.getUserMedia(constraints);
@@ -23,26 +20,51 @@ document.getElementById('switch-camera').addEventListener('click', () => {
     getMedia();
 });
 
-document.getElementById('flash').addEventListener('click', async () => {
-    flashOn = !flashOn;
-    const track = currentStream.getVideoTracks()[0];
-    await track.applyConstraints({ advanced: [{ torch: flashOn }] });
+document.getElementById('camera').addEventListener('click', () => {
+    document.getElementById('camera-input').click();
 });
 
-document.getElementById('take-photo').addEventListener('click', processImage);
+document.getElementById('camera-input').addEventListener('change', processImageFromFile);
 
-function processImage() {
+document.getElementById('take-photo').addEventListener('click', processImageFromCamera);
+
+function processImageFromCamera() {
     const video = document.getElementById('video');
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
     const width = canvas.width = video.videoWidth;
     const height = canvas.height = video.videoHeight;
     context.drawImage(video, 0, 0, width, height);
+    analyzeImage(canvas);
+}
 
-    const imageData = context.getImageData(0, 0, width, height);
+function processImageFromFile(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+
+        reader.onload = function () {
+            const image = new Image();
+            image.src = reader.result;
+
+            image.onload = function () {
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.width = image.width;
+                canvas.height = image.height;
+                context.drawImage(image, 0, 0, canvas.width, canvas.height);
+                analyzeImage(canvas);
+            };
+        };
+    }
+}
+
+function analyzeImage(canvas) {
+    const context = canvas.getContext('2d');
+    const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
     const data = imageData.data;
 
-    // Analyse de la couleur dominante
     const colorCounts = {};
     let maxColorCount = 0;
     let dominantColor = [0, 0, 0];
@@ -63,13 +85,10 @@ function processImage() {
         }
     }
 
-    // Calcul de la luminosité moyenne
-    brightness /= (width * height);
+    brightness /= (canvas.width * canvas.height);
 
-    // Convertir la couleur dominante en code hexadécimal
     const hexColor = `#${dominantColor.map(x => x.toString(16).padStart(2, '0')).join('')}`;
 
-    // Rediriger vers loader.html avec les informations de la couleur dominante
     window.location.href = `loader.html?color=${encodeURIComponent(hexColor)}&brightness=${encodeURIComponent(brightness)}`;
 }
 
