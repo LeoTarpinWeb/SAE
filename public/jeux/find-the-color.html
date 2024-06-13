@@ -10,15 +10,29 @@
 
 <body>
     <div id="setup">
+        <div class="giveheader">
+            <div class="logoImage">
+                <a class="btnlogo" href="../../index.html"> <img src="../../back/images/Logo.png"></a>
+                <img class="btnphoto" src="../../back/images/Logo.png">
+            </div>
+        </div>
         <h1>Color Match Game</h1>
         <form id="player-setup">
             <label for="num-players">Nombre de joueurs:</label>
             <input type="number" id="num-players" name="num-players" min="1" max="10" required>
             
-            <button type="submit" class="button">Jouer</button>
+            <button type="submit" class="button type--C cursorhover">
+                    <div class="button__line"></div>
+                    <div class="button__line"></div>
+                    <span class="button__text">jouer</span>
+                    <div class="button__drow1"></div>
+                    <div class="button__drow2"></div>
+            </button>
        
-        <h2>Règle du jeu</h2>
-        <p>En tour par tour, chacun des joueurs(euses) devront prendre en photo la couleur se rapprochant le plus de celle affichée à l’écran. Vous avez 10 secondes pour trouver une couleur. Au bout du temps imparti, une photo sera prise automatiquement et ce sera le tour du prochain joueur.</p> 
+        <div class="regle">
+            <h2>Règle du jeu</h2>
+            <p>En tour par tour, chacun des joueurs(euses) devront prendre en photo la couleur se rapprochant le plus de celle affichée à l’écran. Vous avez 10 secondes pour trouver une couleur. Au bout du temps imparti, une photo sera prise automatiquement et ce sera le tour du prochain joueur.</p> 
+        </div>
         </form>
     </div>
 
@@ -26,19 +40,23 @@
         <div class="logoImageJeux">
             <img class="btnphotojeux" src="../../back/images/Logo.png">
         </div>
-        <h1>Préparez-vous, <span id="player-name"></span> !</h1>
-        <button id="next-turn-button" class="buttonJeux">Commencer</button>
+        <h1>Préparez-vous <span id="player-name"></span> !</h1>
+        <button id="next-turn-button" class="buttonJeux button type--C cursorhover">
+            <div class="button__line"></div>
+            <div class="button__line"></div>
+            <span class="button__text">jouer</span>
+            <div class="button__drow1"></div>
+            <div class="button__drow2"></div>
+        </button>
     </div>
 
     <div id="game" style="display: none;">
-        <div class="game-container">
+        <div class="game-container" id="target-color" >
             <div class="timer-container">
                 <p>Temps restant: <span id="timer">10</span> secondes</p>
             </div>
             <div class="game-content" id="game-content">
-                <h2 id="player-turn"></h2>
-                <p>Photographiez cette couleur:</p>
-                <div id="target-color" class="color-box"></div>
+                <h2>Photographier cette couleur !</h2>
                 <video id="video" autoplay></video>
                 <canvas id="canvas" style="display:none;"></canvas>
                 <div id="buttons">
@@ -55,10 +73,25 @@
         </div>
     </div>
 
-    <div id="result" style="display: none;">
-        <h2>Résultat</h2>
-        <div id="ranking"></div>
-        <button id="play-again">Rejouer</button>
+    <div id="result" class="resultjeux"style="display: none;">
+        <div class="resultcolor">
+            <h2>Résultat</h2>
+            <div id="ranking"></div>
+        </div>
+        <button id="play-again"  class="buttonJeux button type--C">
+            <div class="button__line"></div>
+            <div class="button__line"></div>
+            <span class="button__text">rejouer</span>
+            <div class="button__drow1"></div>
+            <div class="button__drow2"></div>
+        </button>
+        <a class="button type--C btnphoto cursorhover" href="../../index.html">
+            <div class="button__line"></div>
+            <div class="button__line"></div>
+            <span class="button__text">Accueil</span>
+            <div class="button__drow1"></div>
+            <div class="button__drow2"></div>
+        </a>   
     </div>
 
     <script src="./../../back/Assets/scripts/scripts.js"></script>

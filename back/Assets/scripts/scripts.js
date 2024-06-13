@@ -49,13 +49,12 @@ function showNextPlayer() {
         return;
     }
 
-    document.getElementById('countdown').style.display = 'block';
+    document.getElementById('countdown').style.display = 'flex';
     document.getElementById('game').style.display = 'none';
     document.getElementById('player-name').textContent = players[currentTurn].name;
 }
 
 async function nextTurn() {
-    document.getElementById('player-turn').textContent = `${players[currentTurn].name}, à vous de jouer !`;
     document.getElementById('timer').textContent = '10';
     startTimer();
     await getMedia();
@@ -136,7 +135,7 @@ function generateRandomName() {
 
 function endGame() {
     document.getElementById('game').style.display = 'none';
-    document.getElementById('result').style.display = 'block';
+    document.getElementById('result').style.display = 'flex';
 
     players.forEach(player => {
         player.distance = colorDistance(targetColor, player.photoColor);

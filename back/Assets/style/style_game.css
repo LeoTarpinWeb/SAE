@@ -11,7 +11,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #f0f0f0;
+    background: linear-gradient(135deg, #a1c4fd, #FDB0AA);
 }
 
 h1, h2 {
@@ -19,26 +19,43 @@ h1, h2 {
     margin-bottom: 20px;
     color: #333;
 }
-
+.regle{
+    padding: 20px;
+    margin: 0 15px;
+    background-color: #877cff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+}
+h2{
+    color:white      
+}
 form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    justify-content: start;
+    height: 60%;
 }
 
 label, input, button {
     margin: 10px;
 }
-
+#countdown{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 input {
     padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
+    width: 40vw;
+    height: 8vh;
+    font-size: 30px;
+    border: 6px solid black;
     border-radius: 5px;
+    background: none;
+    text-align: center;
 }
 
 button {
@@ -46,16 +63,13 @@ button {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    background-color: #007BFF;
     color: white;
     border: none;
     border-radius: 5px;
     transition: background-color 0.3s;
+    background-color: unset;
 }
 
-button:hover {
-    background-color: #0056b3;
-}
 
 .color-box {
     width: 100px;
@@ -149,7 +163,7 @@ button:hover {
 }
 
 a img {
-    height: 100% !important;
+    height: 100%;
     width: auto;
     object-fit: cover;
 }
@@ -173,4 +187,275 @@ a img {
     justify-content: center;
     width: 100%;
     height: 100%;
+}
+#setup{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+}
+@media screen and (min-width:850px){
+    .btnphoto,.flecheretour,.gallery,.imglogo{
+        display: none;
+    }
+}
+@media screen and (max-width:750px){
+    #result{
+        width: 80vw;
+        height: 80%;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .resultjeux, .resultjeux h2 ,.resultjeux button{
+        color: black !important;
+    }
+    .resultjeux h2{
+        font-size: 25px;
+    }
+    .resultjeux span{
+        font-size: 20px;
+    }
+    .resultjeux button, .resultjeux a{
+        width: 60vw;
+        height: 8vh;
+        margin-top: 35px;
+    }
+    .resultcolor{
+        height: 50%;
+    }
+    #ranking{
+        height: 40%;
+    }
+    .giveheader{
+        width:100vw;
+        position: fixed;
+        top:0;
+        left:0;
+        height: 25vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .logoImage{
+        width: 60vw;
+        height:100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .btnlogo{
+        width:70%;
+        height: 70%;
+    }
+    a img{
+        height: auto;
+        width: 100%;
+        object-fit: cover;
+    }
+    .btnphoto{
+        display: none;
+    }
+}
+
+.type--C {
+    --line_color: #000000;
+    --back_color: #DEFFFA;
+}
+.button {
+    position: relative;
+    z-index: 0;
+    width: 70vw;
+    height: 9vh;
+    border-radius: 28px; /* Rounded corners */
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--line_color);
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* To handle rounded corners properly */
+}
+.button__text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.button::before,
+.button::after,
+.button__text::before,
+.button__text::after {
+    content: '';
+    position: absolute;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--line_color);
+    transition: all 0.5s ease;
+}
+
+.button::before {
+    top: 0;
+    left: 54px;
+    width: calc(100% - 56px * 2 - 16px);
+}
+
+.button::after {
+    top: 0;
+    right: 54px;
+    width: 8px;
+}
+
+.button__text::before {
+    bottom: 0;
+    right: 54px;
+    width: calc(100% - 56px * 2 - 16px);
+}
+
+.button__text::after {
+    bottom: 0;
+    left: 54px;
+    width: 8px;
+}
+
+.button__line {
+    position: absolute;
+    top: 0;
+    width: 56px;
+    height: 100%;
+    overflow: hidden;
+}
+
+.button__line::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 160%;
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: 300px;
+    border: solid 3px var(--line_color);
+}
+
+.button__line:nth-child(1),
+.button__line:nth-child(1)::before {
+    left: 0;
+}
+
+.button__line:nth-child(2),
+.button__line:nth-child(2)::before {
+    right: 0;
+}
+
+.button__drow1,
+.button__drow2 {
+    position: absolute;
+    z-index: -1;
+    border-radius: 16px;
+    transform-origin: 16px 16px;
+}
+
+.button__drow1 {
+    top: -16px;
+    left: 40px;
+    width: 32px;
+    height: 0;
+    transform: rotate(30deg);
+}
+
+.button__drow2 {
+    top: 44px;
+    left: 77px;
+    width: 32px;
+    height: 0;
+    transform: rotate(-127deg);
+}
+
+.button__drow1::before,
+.button__drow1::after,
+.button__drow2::before,
+.button__drow2::after {
+    content: '';
+    position: absolute;
+}
+
+.button__drow1::before {
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 32px;
+    border-radius: 16px;
+    transform-origin: 16px 16px;
+    transform: rotate(-60deg);
+}
+
+.button__drow1::after {
+    top: -10px;
+    left: 45px;
+    width: 0;
+    height: 32px;
+    border-radius: 16px;
+    transform-origin: 16px 16px;
+    transform: rotate(69deg);
+}
+
+.button__drow2::before {
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 32px;
+    border-radius: 16px;
+    transform-origin: 16px 16px;
+    transform: rotate(-146deg);
+}
+
+.button__drow2::after {
+    bottom: 26px;
+    left: -40px;
+    width: 0;
+    height: 32px;
+    border-radius: 16px;
+    transform-origin: 16px 16px;
+    transform: rotate(-262deg);
+}
+
+.button__drow1,
+.button__drow1::before,
+.button__drow1::after,
+.button__drow2,
+.button__drow2::before,
+.button__drow2::after {
+    background: var(--back_color);
+}
+
+#buttons {
+    margin-top: 20px;
+    display: flex;
+    text-align: center;
+    gap: 40px;
+    z-index: 100;
+}
+.button__icon {
+    width: auto; 
+    height: 60px;
+}
+/* Masquer les flèches d'incrémentation/décrémentation */
+input[type=number] {
+    -webkit-appearance: textfield; /* Safari */
+    -moz-appearance: textfield; /* Firefox */
+    appearance: textfield; /* Autres navigateurs */
+}
+
+/* Masquer également les boutons d'incrémentation/décrémentation dans certains navigateurs */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0; /* Optionnel - si vous voulez réduire l'espace */
 }
