@@ -74,14 +74,17 @@ function analyzeImage(canvas) {
         const r = data[i];
         const g = data[i + 1];
         const b = data[i + 2];
-        brightness += (r + g + b) / 3;
+        const avgBrightness = (r + g + b) / 3;
 
-        const rgb = [r, g, b].join(",");
-        colorCounts[rgb] = (colorCounts[rgb] || 0) + 1;
+        // Filtrer les couleurs trop sombres ou trop claires
+        if (avgBrightness > 20 && avgBrightness < 235) {
+            const rgb = [r, g, b].join(",");
+            colorCounts[rgb] = (colorCounts[rgb] || 0) + 1;
 
-        if (colorCounts[rgb] > maxColorCount) {
-            maxColorCount = colorCounts[rgb];
-            dominantColor = [r, g, b];
+            if (colorCounts[rgb] > maxColorCount) {
+                maxColorCount = colorCounts[rgb];
+                dominantColor = [r, g, b];
+            }
         }
     }
 
